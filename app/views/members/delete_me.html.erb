@@ -1,0 +1,13 @@
+<div class="row">
+
+		<h3 class="text-danger text-center">本当に退会しますか？</h3>
+
+	<p class="text-center">退会すると、会員登録情報の確認や、投稿した記事・コメントの履歴、お気に入りが閲覧できなくなります。<br>
+	投稿した記事やコメント自体は削除されないので、これらを削除したい場合は退会前に削除していただくか、管理者へお問い合わせください。<br>
+	以上のことを承諾し、退会する場合は、「退会する」をクリックしてください。</p><br>
+
+		<center>
+			<%= link_to "退会しない", member_path(@member.id),class: "btn btn-info" %>
+			<%= link_to "退会する", withdraw_path, method: :put, class: "btn btn-danger" %>
+		</center>
+</div>

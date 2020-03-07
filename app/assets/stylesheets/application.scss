@@ -15,3 +15,72 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+// header
+
+#header{
+	color: white;
+	background-color: #59DAC9;
+	margin-bottom: 30px;
+}
+
+.sitelogo img{
+	padding: 10px 3px;
+	height: 70px;
+}
+
+li{
+	position: relative;
+	list-style: none;
+}
+
+.navber-right > li{
+	line-height: 70px;
+	display: inline-block;
+	margin-left: 1px;
+}
+
+.navber-right a{
+	text-decoration: none;
+	padding: 27px 2px;
+	color: white;
+}
+
+.navber-right :not(:first-child) a:hover{
+	background-color: #55C5B8;
+}
+#login-name a:hover{
+	text-decoration: underline;
+}
+
+img:hover{
+	background-color: #55C5B8;
+}
+
+.navber-right{
+	float: right;
+	margin: 0;
+}
+
+// body
+
+body{
+	background-color: #F3FFFE;
+}
+table{
+	background-color: white
+}
+.page-title{
+	text-align: center;
+}
+
+.page-title::after{
+	content: '';
+	display: block;
+	width: 100px;
+	height: 3px;
+	border-color: #55C5B8;
+	border-bottom-style: solid ;
+	margin: 5px auto 0;
+}

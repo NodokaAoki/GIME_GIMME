@@ -1,0 +1,22 @@
+// Place all the styles related to the Members controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 会員情報編集
+.member-edit{
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.member-edit .row{
+	margin: 10px 0;
+	line-height: 32px;
+}
+
+.member-edit .text-right{
+	font-size: 12px;
+}
+.member-edit .text-right a{
+	text-decoration: underline;
+}

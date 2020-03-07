@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-xs-12 member-data-box">
+		<ul class="member-data">
+          <li><%= @member.name %>さん
+          	<% if @member.status == '有効' %>
+				<span class="label label-success">有効</span>
+			<%  elsif @member.status == '退会' %>
+				<span class="label label-danger">退会</span>
+			<%  else %>
+				<span class="label label-warning">停止</span>
+			<% end %>
+          </li>
+          <li>ID：<%= @member.id %></li>
+          <li>通報回数：<%= @member.report_count %></li>
+		  <li>メールアドレス：<%= @member.email %></li>
+		</ul>
+	</div>
+</div>

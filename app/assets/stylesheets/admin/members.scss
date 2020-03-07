@@ -1,0 +1,61 @@
+// Place all the styles related to the admin::members controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 会員一覧
+.members > table{
+	margin-bottom: 0;
+}
+
+.btn-edit{
+	margin-right: 10px;
+}
+
+.status{
+	margin: 0;
+	font-size: 18px;
+}
+
+.table .table-member{
+	vertical-align: middle;
+}
+
+// 会員詳細
+.member-data-box{
+	border: 2px solid black;
+	border-radius: 3px;
+	background-color: white;
+	padding: 5px;
+}
+.member-data-box > ul{
+	margin: 5px;
+	padding: 0;
+}
+.member-data > li{
+	display: inline-block;
+	margin-right: 20px;
+	font-size: 16px;
+}
+.member-data > li:last-child{
+	margin-right: 0;
+}
+
+
+// 会員情報編集
+.member-edit{
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.member-edit .row{
+	margin: 10px 0;
+	line-height: 32px;
+}
+.member-edit .radio input[type="radio"]{
+	position: relative;
+}
+.member-edit .radio{
+	margin: 0;
+}
