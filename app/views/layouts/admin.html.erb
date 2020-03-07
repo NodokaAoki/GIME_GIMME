@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GimeGimme</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header id="header-admin">
+    <div class="container">
+        <nav class="nav">
+          <a class="sitelogo" href="/">
+            <%= image_tag('logo1.png') %>
+          </a>
+          <ul class="navber-right">
+
+          <% if admin_signed_in? %>
+            <li id="login-name-admin">管理者でログイン中</li>
+            <li><%= link_to "トップページ" %></li>
+            <li><%= link_to "会員一覧",admin_members_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+          <!-- ゲスト -->
+          <% else %>
+            <li id="login-name-admin">ログインしてください</li>
+
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <div class="container">
+    <%= yield %>
+    </div>
+
+  </body>
+</html>

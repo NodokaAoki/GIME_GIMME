@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col-xs-12">
+		<h2 class="page-title">会員情報編集</h2>
+	</div>
+</div>
+
+<div class="member-edit">
+
+	<%= form_for(@member,:url => {controller: "admin/members", :action => :update}) do |f| %>
+
+		<div class="row">
+			<div class="col-xs-3">
+				会員ID
+			</div>
+			<div class="col-xs-9">
+				<%= @member.id %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				アカウント名
+			</div>
+			<div class="col-xs-9">
+				<%= f.text_field :name,class: "form-control" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				メールアドレス
+			</div>
+			<div class="col-xs-9">
+				<%= f.email_field :email,class: "form-control" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				会員ステータス
+			</div>
+			<div class="col-xs-9 radio">
+				<label><%= f.radio_button :status, '有効' %>有効</label>
+				<label><%= f.radio_button :status, '退会' %>退会</label>
+				<label><%= f.radio_button :status, '停止' %>停止</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				通報回数
+			</div>
+			<div class="col-xs-9">
+				<%= f.text_field :report_count,class: "form-control" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<%= f.submit "変更を保存",class: "btn btn-primary center-block" %>
+			</div>
+		</div>
+
+	<% end %>
+
+</div>
