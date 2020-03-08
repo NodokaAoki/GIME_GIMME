@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_07_170529) do
+ActiveRecord::Schema.define(version: 2020_03_08_012534) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 2020_03_07_170529) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "genre_id", null: false
+    t.text "title", null: false
+    t.date "release", null: false
+    t.integer "number_of_people", null: false
+    t.text "text", null: false
+    t.boolean "complete", null: false
+    t.boolean "orbit", null: false
+    t.boolean "multi_ending", null: false
+    t.integer "cero_rating", null: false
+    t.text "site_url"
+    t.boolean "status", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_games_on_title", unique: true
   end
 
   create_table "genres", force: :cascade do |t|

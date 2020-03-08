@@ -5,4 +5,6 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum status: {有効: 0, 退会: 1,停止: 2}
+
+	has_many :games #会員を消してもゲームは消さないのでdestroyは無し
 end
