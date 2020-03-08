@@ -2,16 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// 新規投稿画面
+//////////
+// 共通 //
+//////////
 
-// 投稿フォーム
-.new-game-form{
-	border: 2px solid #59DAC9;
-	background-color: white;
-	margin: 0px auto;
-	padding: 30px;
-	border-radius: 5px;
-}
 // 発売日セレクトボックス
 #game_release_1i,#game_release_2i,#game_release_3i{
     display: inline-block;
@@ -34,18 +28,12 @@
 	width: 15%
 }
 // ゲーム内容テキストフォーム
-.new-game-form .game-text{
+.game-form .game-text{
 	height: 400px;
 }
 
-// 仕切り
-.new-game-form .row{
-	border-top:1px solid #59DAC9;
-	padding: 15px 0;
-	margin: 0 10px;
-}
 // 文字位置調整
-.new-game-form .col-xs-3,.radio{
+.game-form .col-xs-3,.radio{
 	height: 34px;
 	line-height: 34px;
 }
@@ -60,4 +48,42 @@
 // 作成ボタン
 .col-xs-12 .btn-game{
 	margin: 20px 0;
+}
+
+////////////////
+// 新規投稿画面 //
+////////////////
+// 新規投稿フォーム
+.new-game-form{
+	border: 2px solid #59DAC9;
+	background-color: white;
+	margin: 0px auto;
+	padding: 30px;
+	border-radius: 5px;
+}
+// 仕切り
+.new-game-form .row{
+	border-top:1px solid #59DAC9;
+	padding: 15px 0;
+	margin: 0 10px;
+}
+
+/////////////
+// 編集画面 //
+/////////////
+
+// 編集フォーム
+.edit-game-form{
+	border: 2px solid #EAA05F;
+	background-color: white;
+	margin: 0px auto;
+	padding: 30px;
+	border-radius: 5px;
+}
+
+// 仕切り
+.edit-game-form .row{
+	border-top:1px solid #EAA05F;
+	padding: 15px 0;
+	margin: 0 10px;
 }

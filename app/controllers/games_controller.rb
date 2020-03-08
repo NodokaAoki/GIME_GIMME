@@ -27,15 +27,33 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @game = Game.find(params[:id])
+    @genres = Genre.where(status: 'true')
   end
 
   def update
-  end
-
-  def delete_game
+    @game = Game.find(params[:id])
+    @game.update!(game_params)
+    redirect_to game_path(@game.id)
   end
 
   def hidden
+    @game = Game.find(params[:id])
+    if @game.status == true
+      @game.status = false
+      @game.save!
+      redirect_to game_path(@game.id),notice: "記事を非公開にしました。"
+    else
+      @game.status = true
+      @game.save!
+      redirect_to game_path(@game.id),notice: "記事を公開にしました。"
+    end
+  end
+
+  def delete
+    @game = Game.find(params[:id])
+    @game.destoy
+    redirect_to root_path, notice: "記事を完全に削除しました。"
   end
 
   private

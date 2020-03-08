@@ -1,30 +1,20 @@
-<% if @game.status == false %>
-	このゲーム記事は非公開です。
-<!-- 作成者なら編集ボタン -->
-<div class="row">
-	<% if member_signed_in? && @game.member_id = current_member.id %>
-		<div class="col-xs-12">
-			<%= link_to "編集する",edit_game_path(@game), class: "btn-sm btn-info" %>
-		</div>
-	<% end %>
-</div>
-<!-- /作成者なら編集ボタン -->
 
-<% else %>
 <div class="row">
 	<div class="col-xs-12">
-		<h2 class="page-title"><%= @game.title %></h2>
+		<h2 class="page-title"><%= @game.title %>
+			<% if @game.status == true %>
+				<span class="label label-success">公開</span>
+			<%  else %>
+				<span class="label label-danger">非公開</span>
+			<% end %>
+		</h2>
 	</div>
 </div>
-<!-- 作成者なら編集ボタン -->
 <div class="row">
-	<% if member_signed_in? && @game.member_id = current_member.id %>
 		<div class="col-xs-12">
-			<%= link_to "編集する",edit_game_path(@game), class: "btn-sm btn-info" %>
+			<%= link_to "編集する",edit_admin_game_path(@game), class: "btn-sm btn-info" %>
 		</div>
-	<% end %>
 </div>
-<!-- /作成者なら編集ボタン -->
 
 
 <div class="game-box">
@@ -108,23 +98,6 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
-		<!-- プレイ時間投票 -->
-		<% if !member_signed_in? %><!-- ゲスト -->
-			ログインすると、プレイ時間を投票することができます。
-		<% elsif @game.member_id == current_member.id %><!-- 作成者非表示 -->
-		<%  elsif @game.playtime_by?(current_member) %><!-- 投票済 -->
-			このゲームのプレイ時間は投票済みです。
-		<% else member_signed_in? %><!-- 未投票 -->
-			<%= form_for(@playtime,:url => {controller: "games", :action => :playtime_create}, html:{class: "form-inline"}) do |f| %>
-			<%= f.select :time, Playtime.times.keys.to_a, {include_blank: '選択'},class: "form-control" %>
-			<%= f.submit "プレイ時間送信",class: "btn btn-primary btn-sm btn-game" %>
-        	<% end %>
-		<% end %>
-		<!-- /プレイ時間投票 -->
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-xs-3">
 			URL
 		</div>
@@ -142,4 +115,3 @@
 		</div>
 	</div>
 </div>
- <% end %>
