@@ -19,48 +19,83 @@
 
 // header
 
+// 会員ヘッダー基本色
 #header{
 	color: white;
 	background-color: #59DAC9;
 	margin-bottom: 30px;
 }
-
+// ロゴ
 .sitelogo img{
 	padding: 10px 3px;
 	height: 70px;
 }
-
-li{
-	position: relative;
-	list-style: none;
-}
-
-.navber-right > li{
-	line-height: 70px;
-	display: inline-block;
-	margin-left: 1px;
-}
-
-.navber-right a{
-	text-decoration: none;
-	padding: 27px 2px;
-	color: white;
-}
-
-.navber-right :not(:first-child) a:hover{
-	background-color: #55C5B8;
-}
-#login-name a:hover{
-	text-decoration: underline;
-}
-
+// ロゴhoverしたとき背景色変化
 img:hover{
 	background-color: #55C5B8;
 }
-
+// liの装飾無し
+li{
+	list-style: none;
+}
+// ヘッダーメニュー右寄せ
 .navber-right{
+	height: 70px;
 	float: right;
+	width: 75%;
+}
+// ulの余白無し(bootstrap)
+.nav ul{
 	margin: 0;
+	padding: 0;
+}
+// ヘッダーメニューの横並びと見た目調整
+.navber-right > li{
+	position: relative;
+	float: right;
+	display: inline-block;
+	line-height: 70px;
+	height: 70px;
+	text-align: center;
+}
+// ユーザー名以外の要素のサイズ指定
+.navber-right > li:not(.login-name){
+	width: 20%;
+}
+// ヘッダーメニューのリンク
+.navber-right li > a{
+	text-decoration: none;
+	color: white;
+	line-height: 70px;
+	display: block;
+}
+// hoverした時の背景色変化
+.navber-right :not(.login-name) > a:hover,.menu-li:hover{
+	background-color: #55C5B8;
+	color: white;
+}
+// ユーザー名hoverした時に下線
+#login-name a:hover{
+	text-decoration: underline;
+}
+// ドロップダウン（メニュー）調整
+.menu-li{
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	border: none;
+	width: 100%;
+}
+// ドロップダウン（メニュー）の中身調整
+.navber-right li > ul > li > a{
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+}
+// ドロップダウン（メニュー）の見た目調整
+#header .navber-right li:hover ul {
+	display: block;
+	background-color: #59DAC9;
 }
 
 // body
@@ -74,7 +109,7 @@ table{
 .page-title{
 	text-align: center;
 }
-
+// ページタイトルの下線デザイン
 .page-title::after{
 	content: '';
 	display: block;

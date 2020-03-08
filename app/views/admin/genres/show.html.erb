@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-xs-12">
+		<h2 class="page-title">ジャンル：<%= @genre.name %></h2>
+	</div>
+</div>
+
+<div class="genre-edit-box">
+	<div class="row">
+		<div class="col-xs-12 genre-edit">
+		<div class="genre-edit-title text-center">ジャンル情報変更</div>
+		</div>
+	</div>
+
+	<%= form_for(@genre ,url: admin_genre_path,action: :update,html:{class: "form-inline"}) do |f| %>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="genre-edit-content">
+					<%= f.label :name,"ジャンル名" %>
+					<%= f.text_field :name,class: "form-control" %>
+					<%= f.label :status,"ステータス" %>
+					<label><%= f.radio_button :status, true %>有効</label>
+					<label><%= f.radio_button :status, false %>無効</label>
+					<%= f.submit "変更を保存",class: "btn btn-primary" %>
+					<%= link_to "削除する", admin_genre_path, method: :delete,class: "btn btn-danger", "data-confirm" => "本当に削除しますか？(ジャンルを削除しても、ジャンルに属するゲームは削除されません)" %>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+
+</div>

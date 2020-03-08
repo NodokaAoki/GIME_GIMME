@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// 管理者用ヘッダーメニューデザイン
 #header-admin{
 	color: white;
 	background-color: black;
 	margin-bottom: 30px;
 }
-
+// 管理者名を赤く
 #login-name-admin{
 	color: red;
+}
+// ドロップダウン（メニュー）のデザイン
+#header-admin .navber-right li:hover ul {
+	display: block;
+	background-color: black;
 }
