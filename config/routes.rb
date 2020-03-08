@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :members, only: [:index,:show, :edit, :update]
-    resources :genres, only: [:index,:show,:create, :update,:destroy]
+    resources :genres, only: [:index,:create, :update]
     resources :games, only: [:index,:show, :edit, :update,:destroy]
+    resources :models, only: [:index,:create, :update]
   end
   get 'admin/top' => 'admin#top', as: 'admin_top'
   devise_for :admins, controllers: {
