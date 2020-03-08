@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-  resources :members, only: [:index,:show, :edit, :update]
+    resources :members, only: [:index,:show, :edit, :update]
+    resources :genres, only: [:index,:show,:create, :update,:destroy]
   end
+  get 'admin/top' => 'admin#top', as: 'admin_top'
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
   }

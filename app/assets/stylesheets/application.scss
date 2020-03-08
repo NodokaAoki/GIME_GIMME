@@ -31,23 +31,50 @@
 }
 
 li{
-	position: relative;
 	list-style: none;
 }
 
+.navber-right{
+	height: 70px;
+	float: right;
+	width: 75%;
+}
+.nav ul{
+	margin: 0;
+	padding: 0;
+}
 .navber-right > li{
-	line-height: 70px;
+	position: relative;
+	float: right;
 	display: inline-block;
-	margin-left: 1px;
+	line-height: 70px;
+	height: 70px;
+	text-align: center;
+}
+.navber-right > li:not(#login-name-admin){
+	width: 20%;
+}
+.menu-li{
+	padding: 0;
+	margin: 0;
+	background-color: black;
+	border: none;
+	width: 100%;
 }
 
-.navber-right a{
+.navber-right li > a{
 	text-decoration: none;
-	padding: 27px 2px;
 	color: white;
+	line-height: 70px;
+	display: block;
+}
+.navber-right li > ul > li > a{
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
 }
 
-.navber-right :not(:first-child) a:hover{
+.navber-right :not(#login-name-admin) > a:hover,.menu-li:hover{
 	background-color: #55C5B8;
 }
 #login-name a:hover{
@@ -56,11 +83,6 @@ li{
 
 img:hover{
 	background-color: #55C5B8;
-}
-
-.navber-right{
-	float: right;
-	margin: 0;
 }
 
 // body
