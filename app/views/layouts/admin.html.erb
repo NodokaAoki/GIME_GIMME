@@ -23,17 +23,17 @@
             <li>
               <button class="menu-li dropdown-toggle" data-toggle="dropdown">メニュー</button>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "トップページ" %></li>
+                  <li><%= link_to "管理者トップページ",admin_top_path %></li>
                   <li><%= link_to "会員一覧",admin_members_path %></li>
                   <li><%= link_to "ジャンル一覧",admin_genres_path %></li>
+                  <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
                 </ul>
             </li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            <li id="login-name-admin">管理者ログイン中</li>
+            <li class="login-name" id="login-name-admin">管理者ログイン中</li>
 
           <!-- ゲスト -->
           <% else %>
-            <li id="login-name-admin">ログインしてください</li>
+            <li class="login-name" id="login-name-admin">ログインしてください</li>
 
           <% end %>
         </ul>
