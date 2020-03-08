@@ -33,6 +33,14 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-3">
+				ゲームジャンル
+			</div>
+			<div class="col-xs-7">
+    			<%= f.collection_select :genre_id, @genres, :id, :name, {},{class: "form-control"} %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
 				最大プレイ人数
 			</div>
 			<div class="col-xs-7">
@@ -91,8 +99,9 @@
 				プレイ時間
 			</div>
 			<div class="col-xs-7">
-				<%= form_for(@playtime,:url => {controller: "games", :action => :create}, html:{class: "form-inline"}) do |f| %>
-				<%= f.select :time, Playtime.times.keys.to_a, {include_blank: '選択'},class: "form-control" %>
+				<%= f.fields_for :playtimes do |time| %>
+				<%= time.select :time, Playtime.times.keys.to_a, {include_blank: '選択'},class: "form-control" %>
+				<%= time.hidden_field :member_id, :value => current_member.id %>
 				<% end %>
 			</div>
 		</div>
@@ -110,7 +119,7 @@
 				ゲーム内容
 			</div>
 			<div class="col-xs-7">
-				<%= f.text_area :text, :size=>'60%', class: "form-control game-text",placeholder: "ゲームの内容について記述してください。（ネタバレ厳禁）" %>
+				<%= f.text_area :text, :size=>'60%', class: "form-control game-text",placeholder: "ネタバレ厳禁" %>
 			</div>
 		</div>
 	</div>
@@ -118,7 +127,6 @@
 		<div class="row">
 			<div class="col-xs-12">
 			<%= f.submit "ゲーム新規作成",class: "btn btn-primary btn-block btn-lg btn-game" %>
-			</div>
 			</div>
 		</div>
 
