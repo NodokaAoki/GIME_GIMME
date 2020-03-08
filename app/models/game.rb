@@ -1,4 +1,6 @@
 class Game < ApplicationRecord
-	belogngs_to :genre
-	belogngs_to :member
+	belongs_to :genre
+	belongs_to :member
+
+	enum cero_rating:{"A(全年齢)": 0,"B(12歳以上)": 1,"C(15歳以上)": 2,"D(17歳以上)": 3,"Z(18歳以上)": 4}
 end

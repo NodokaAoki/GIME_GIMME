@@ -22,4 +22,9 @@ Rails.application.routes.draw do
   get 'members/:id/delete_me' => 'members#delete_me', as: 'delete_me'
   put 'members/:id/delete_me' =>'members#withdraw', as: 'withdraw'
 
+  resources :games, only: [:show, :edit, :update, :create,:new]
+  get 'games/:id/delete_game' => 'games#delete_game', as: 'delete_game'
+  get 'games/:id/hidden'      => 'games#hidden'     , as: 'hidden'
+
+
 end
