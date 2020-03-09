@@ -14,6 +14,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @models = GameModel.where(game_id: @game.id)
     @playtimes = @game.playtimes
     @playtime = Playtime.new
   end
@@ -58,7 +59,7 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:title,:release,:number_of_people,:text,:complete,:orbit,:multi_ending,:site_url,:status,:genre_id,:cero_rating,playtimes_attributes: [ :time,:member_id])
+    params.require(:game).permit(:title,:release,:number_of_people,:text,:complete,:orbit,:multi_ending,:site_url,:status,:genre_id,:cero_rating,model_ids:[],playtimes_attributes: [ :time,:member_id])
   end
   def playtime_params
     params.require(:playtime).permit(:time,:member_id)
