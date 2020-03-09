@@ -7,4 +7,5 @@ class Member < ApplicationRecord
   enum status: {有効: 0, 退会: 1,停止: 2}
 
 	has_many :games #会員を消してもゲームは消さないのでdestroyは無し
+	has_many :playtimes
 end

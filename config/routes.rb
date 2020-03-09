@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
   resources :games, only: [:show, :edit, :update, :create,:new]
   get 'games/:id/delete_game' => 'games#delete_game', as: 'delete_game'
-  get 'games/:id/hidden'      => 'games#hidden'     , as: 'hidden'
+  put 'games/:id/hidden'      => 'games#hidden'     , as: 'hidden'
+  post 'games/:id/playtime_create'      => 'games#playtime_create'
 
 
 end
