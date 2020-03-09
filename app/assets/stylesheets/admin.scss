@@ -17,3 +17,33 @@
 	display: block;
 	background-color: black;
 }
+
+// 管理者用テーブルデザイン
+.table-admin h4{
+	margin: 0;
+}
+
+.table-admin .table-admin td{
+	vertical-align: middle;
+}
+
+.table-admin th{
+	background-color: black;
+	color: white;
+}
+
+// 管理者用追加フォーム
+.admin-add{
+	background-color: white;
+	padding: 10px;
+	text-align: center;
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+
+.admin-add-label{
+	display: inline-block;
+	font-size: 18px;
+	padding-right: 5px;
+	margin-bottom: 0;
+}

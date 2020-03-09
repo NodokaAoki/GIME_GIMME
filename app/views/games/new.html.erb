@@ -41,6 +41,14 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-3">
+				対応機種
+			</div>
+			<div class="col-xs-7">
+    			<%= f.collection_check_boxes :model_ids, Model.all.order(id: "DESC"), :id, :model %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
 				最大プレイ人数
 			</div>
 			<div class="col-xs-7">

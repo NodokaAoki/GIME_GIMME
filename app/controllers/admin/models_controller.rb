@@ -1,4 +1,4 @@
-class Admin::ModelsController < ApplicationController
+class Admin::ModelsController < AdminController
   def index
     @models = Model.all
     @model = Model.new
