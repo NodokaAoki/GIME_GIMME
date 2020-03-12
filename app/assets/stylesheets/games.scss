@@ -87,3 +87,58 @@
 	padding: 15px 0;
 	margin: 0 10px;
 }
+
+//////////////////
+// ゲーム詳細画面 //
+//////////////////
+
+// 詳細内容
+.game-box{
+	background-color: white;
+	margin: 0px auto 30px;
+	padding: 30px;
+	border-radius: 5px;
+}
+.game-title{
+	margin: 0;
+	padding-left: 10px;
+}
+.game-title-box{
+	border-bottom: 2px solid #59DAC9;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+.game-data-box{
+	padding: 10px 0 10px 10px;
+	font-size: 14px;
+	margin: 10px auto;
+	background-color: #DCF4F0;
+}
+.game-data-box td{
+	padding: 3px 5px;
+	border: 1px solid #9DDAC9;
+}
+.game-data-under-box{
+	padding: 0 10px;
+}
+.game-text-box{
+	margin-left: 15px;
+	width: 65%;
+}
+.game-text-title{
+	text-decoration: underline;
+	font-size: 18px;
+}
+.game-text{
+	margin-left: 5px;
+	font-size: 16px;
+}
+.game-data-table{
+	width: 30%;
+	margin-right: 5px;
+}
+.playtime-title{
+	text-decoration: underline;
+	text-decoration-color: #9DDAC9;
+	margin: 20px auto 0px;
+}

@@ -32,7 +32,7 @@
           </li>
           <li><%= link_to "アバウト" %></li>
           <li><%= link_to "トップページ",root_path %></li>
-          <li class="login-name" id="login-name"><%= link_to current_member.name,member_path(current_member) %>さん</li>
+          <li class="login-name", id="login-name"><span><%= link_to current_member.name,member_path(current_member) %>さん</span></li>
         </ul>
       </nav>
     </div>

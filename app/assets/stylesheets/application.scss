@@ -62,6 +62,9 @@ li{
 .navber-right > li:not(.login-name){
 	width: 20%;
 }
+#login-name a{
+	color: white;
+}
 // ヘッダーメニューのリンク
 .navber-right li > a{
 	text-decoration: none;
@@ -118,4 +121,8 @@ table{
 	border-color: #55C5B8;
 	border-bottom-style: solid ;
 	margin: 5px auto 30px;
+}
+// テーブルの文字上下中央揃え
+.table .table-cel td{
+	vertical-align: middle;
 }

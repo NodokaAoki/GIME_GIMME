@@ -11,110 +11,102 @@
 <!-- /作成者なら編集ボタン -->
 
 <% else %>
-<div class="row">
-	<div class="col-xs-12">
-		<h2 class="page-title"><%= @game.title %></h2>
-	</div>
-</div>
-<!-- 作成者なら編集ボタン -->
-<div class="row">
-	<% if member_signed_in? && @game.member_id = current_member.id %>
-		<div class="col-xs-12">
-			<%= link_to "編集する",edit_game_path(@game), class: "btn-sm btn-info" %>
-		</div>
-	<% end %>
-</div>
-<!-- /作成者なら編集ボタン -->
+
+
+
 
 
 <div class="game-box">
+	<div class="game-title-box">
+		<h3 class="game-title"><%= @game.title %>
+		<!-- 作成者なら編集ボタン -->
+		<% if member_signed_in? && @game.member_id = current_member.id %>
+			<%= link_to "編集する",edit_game_path(@game), class: "btn-sm btn-info" %>
+		<% end %>
+		<!-- /作成者なら編集ボタン -->
+		</h3>
+	</div>
+
+	<div class="game-data-box clearfix">
+		<div class="game-text-box pull-left">
+			<p class="game-text-title">内容</p>
+			<div class="game-text"><%= @game.text %></div>
+		</div>
+		<div class="game-data-table pull-right">
+			<table>
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>発売日</td>
+						<td><%= @game.release.strftime("%Y年%m月%d日") %></td>
+					</tr>
+					<tr>
+						<td>ゲームジャンル</td>
+						<td><%= @game.genre.name %></td>
+					</tr>
+					<tr>
+						<td>対応機種</td>
+						<td>
+							<% @models.each do |m| %>
+								<%= m.model.model %><br>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td>最大プレイ人数</td>
+						<td><%= @game.number_of_people %>人</td>
+					</tr>
+
+					<tr>
+						<td>コンプリート要素</td>
+						<td>
+							<% if @game.complete == true %>
+							有
+							<% else %>
+							無
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td>周回プレイ要素</td>
+						<td>
+							<% if @game.orbit == true %>
+							有
+							<% else %>
+							無
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td>マルチエンド方式</td>
+						<td>
+							<% if @game.multi_ending == true %>
+							有
+							<% else %>
+							無
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td>CEROレーティング</td>
+						<td><%= @game.cero_rating %></td>
+					</tr>
+					<tr>
+						<td>URL</td>
+						<td><%= @game.site_url %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 	<div class="row">
-		<div class="col-xs-3">
-			発売日
-		</div>
-		<div class="col-xs-7">
-			<%= @game.release %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			ゲームジャンル
-		</div>
-		<div class="col-xs-7">
-			<%= @game.genre.name %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			対応機種
-		</div>
-		<div class="col-xs-7">
-			<% @models.each do |m| %>
-				<%= m.model.model %>
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			最大プレイ人数
-		</div>
-		<div class="col-xs-7">
-			<%= @game.number_of_people %>人
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			コンプリート要素
-		</div>
-		<div class="col-xs-7">
-			<% if @game.complete == "true" %>
-			有
-			<% else %>
-			無
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			周回プレイ要素
-		</div>
-		<div class="col-xs-7">
-			<% if @game.orbit == "true" %>
-			有
-			<% else %>
-			無
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			マルチエンド方式
-		</div>
-		<div class="col-xs-7">
-			<% if @game.multi_ending == "true" %>
-			有
-			<% else %>
-			無
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			CEROレーティング
-		</div>
-		<div class="col-xs-7">
-			<%= @game.cero_rating %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			プレイ時間
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-xs-12">
-			<%= bar_chart @playtimes.group(:time).count, max: 100 %>
+			<h4 class="text-center playtime-title">このゲームをプレイした人のプレイ時間</h4>
+			<%= bar_chart @playtimes.group(:time).count, max: 100,height: "500px" %>
 		</div>
 	</div>
 	<div class="row">
@@ -134,22 +126,8 @@
 		<!-- /プレイ時間投票 -->
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			URL
-		</div>
-		<div class="col-xs-7">
-			<%= @game.site_url %>
-		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-xs-3">
-			ゲーム内容
-		</div>
-		<div class="col-xs-7">
-			<%= @game.text %>
-		</div>
-	</div>
+
 </div>
+
  <% end %>

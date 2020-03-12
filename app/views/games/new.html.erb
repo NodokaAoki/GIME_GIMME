@@ -44,7 +44,7 @@
 				対応機種
 			</div>
 			<div class="col-xs-7">
-    			<%= f.collection_check_boxes :model_ids, Model.all.order(id: "DESC"), :id, :model %>
+    			<%= f.collection_check_boxes :model_ids, Model.all.reverse_order, :id, :model %>
 			</div>
 		</div>
 		<div class="row">

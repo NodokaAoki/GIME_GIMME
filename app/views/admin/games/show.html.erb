@@ -48,7 +48,7 @@
 			コンプリート要素
 		</div>
 		<div class="col-xs-7">
-			<% if @game.complete == "true" %>
+			<% if @game.complete == true %>
 			有
 			<% else %>
 			無
@@ -60,7 +60,7 @@
 			周回プレイ要素
 		</div>
 		<div class="col-xs-7">
-			<% if @game.orbit == "true" %>
+			<% if @game.orbit == true %>
 			有
 			<% else %>
 			無
@@ -72,7 +72,7 @@
 			マルチエンド方式
 		</div>
 		<div class="col-xs-7">
-			<% if @game.multi_ending == "true" %>
+			<% if @game.multi_ending == true %>
 			有
 			<% else %>
 			無

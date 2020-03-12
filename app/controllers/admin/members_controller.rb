@@ -6,6 +6,7 @@ class Admin::MembersController < AdminController
 
   def show
 	@member = Member.find(params[:id])
+  @games = Game.where(member_id: current_member.id).reverse_order
   end
 
   def edit

@@ -29,7 +29,7 @@
 				</thead>
 				<tbody>
 					<% @models.each do |model| %>
-						<tr class="text-center table-admin">
+						<tr class="text-center table-cel">
 							<td><%= model.id %></td>
 							<td><%= model.model %></td>
 							<td><%= form_for([:admin,model],html:{class: "form-inline"}) do |f| %>

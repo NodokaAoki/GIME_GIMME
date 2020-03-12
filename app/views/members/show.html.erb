@@ -14,3 +14,30 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<h2 class="game-index">投稿記事一覧<%= link_to "新規作成する", new_game_path, class: "btn btn-success btn-sm" %></h2>
+
+		<div class="games">
+			<table class= "table table-hover">
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<% @games.each do |game| %>
+						<tr class="table-cel">
+							<td><%= link_to game_path(game.id)do %><%= game.title %><% end %></td>
+							<td>作成日：<%= game.created_at.strftime("%Y年%m月%d日") %></td>
+							<td>いいね数</td>
+							<td>コメント数</td>
+							<td class="text-center"><%= link_to "編集する", edit_game_path(game.id),class: "btn btn-primary btn-sm btn-edit" %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
