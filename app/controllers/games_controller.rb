@@ -17,6 +17,8 @@ class GamesController < ApplicationController
     @models = GameModel.where(game_id: @game.id)
     @playtimes = @game.playtimes
     @playtime = Playtime.new
+    @comments = @game.comments.reverse_order
+    @comment = Comment.new
   end
 
   def playtime_create
@@ -64,4 +66,5 @@ class GamesController < ApplicationController
   def playtime_params
     params.require(:playtime).permit(:time,:member_id)
   end
+
 end

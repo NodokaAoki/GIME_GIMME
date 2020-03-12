@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   get 'members/:id/delete_me' => 'members#delete_me', as: 'delete_me'
   put 'members/:id/delete_me' =>'members#withdraw', as: 'withdraw'
 
-  resources :games, only: [:show, :edit, :update, :create,:new]
+  resources :games, only: [:show, :edit, :update, :create,:new] do
+    resource :comments, only: [:create,:destroy]
+  end
   put 'games/:id/hidden'      => 'games#hidden'     , as: 'hidden'
   post 'games/:id/playtime_create'      => 'games#playtime_create'
 
