@@ -1,0 +1,43 @@
+// Place all the styles related to the favorites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.favorite{
+  width: 50px;
+  height: 50px;
+  border: 3px solid #308070;
+  border-radius: 100%;
+  line-height: 40px;
+  text-align: center;
+}
+.favorite a{
+  display: block;
+}
+
+// ゲスト
+.favorite-guest{
+  background-color: #B7D8D0;
+  color: #308070;
+}
+// お気に入り済
+.favorite-done{
+  background-color: #62C9B3;
+}
+.favorite-done a{
+  color: white;
+}
+.favorite-done a:hover{
+  color: #DDF3EE;
+  text-decoration: none;
+}
+// 未お気に入り
+.favorite-not{
+  background-color: white;
+}
+.favorite-not a{
+  color: #8BC3B6;
+}
+.favorite-not a:hover{
+  color: #308070;
+  text-decoration: none;
+}

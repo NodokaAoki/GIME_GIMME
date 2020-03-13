@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [:show, :edit, :update, :create,:new] do
     resource :comments, only: [:create,:destroy]
+    resource :favorites, only: [:create,:destroy]
   end
   put 'games/:id/hidden'      => 'games#hidden'     , as: 'hidden'
   post 'games/:id/playtime_create'      => 'games#playtime_create'

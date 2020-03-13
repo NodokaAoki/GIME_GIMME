@@ -1,3 +1,50 @@
 <%= flash[:notice] %>
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="genre-box">
+      <ul>
+      <% @genres.each do |genre| %>
+          <li><%= genre.name %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6">
+    <div class="top-game-box">
+      <div class="top-game-title">
+        <h2 class="glyphicon glyphicon-bullhorn">新着記事</h2>
+      </div>
+      <% @newgames.each do |game| %>
+        <div class="top-game">
+          <h3><%= link_to game.title,game_path(game.id) %></h3>
+          <div class="top-count">
+            <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
+            <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
+          </div>
+          <div class="top-genre"><%= game.genre.name %></div>
+          <div class="top-time"><%= time_ago_in_words(game.created_at) %>前</div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-xs-6">
+    <div class="top-game-box">
+      <div class="top-game-title">
+      <h2  class="glyphicon glyphicon-bell">お気に入りランキング</h2>
+      </div>
+      <% @rankgames.each.with_index(1) do |game, i| %>
+        <div class="top-game">
+          <h3><span class="rank-num"><%= i %>. </span><%= link_to game.title,game_path(game.id) %></h3>
+            <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
+            <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
+          <div class="top-genre"><%= game.genre.name %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

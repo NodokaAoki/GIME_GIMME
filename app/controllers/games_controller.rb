@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   def new
     @game = Game.new
     @playtime = @game.playtimes.build

@@ -12,19 +12,35 @@
 
 <% else %>
 
-
-
-
-
 <div class="game-box">
-	<div class="game-title-box">
-		<h2 class="game-title"><strong><%= @game.title %></strong>
+	<div class="game-title-box clearfix">
+		<h2 class="game-title pull-left"><strong><%= @game.title %></strong>
 		<!-- 作成者なら編集ボタン -->
 		<% if member_signed_in? && @game.member.id == current_member.id %>
 			<%= link_to "編集する",edit_game_path(@game), class: "btn-sm btn-info" %>
 		<% end %>
 		<!-- /作成者なら編集ボタン -->
 		</h2>
+
+		<!-- お気に入り -->
+		<% if !member_signed_in? %><!-- ゲスト -->
+			<div class="favorite favorite-guest pull-right">
+				<%= @game.favorites.count %>fav
+			</div>
+		<%  elsif @game.favorite_by?(current_member) %><!-- お気に入り済 -->
+			<div class="favorite favorite-done pull-right">
+				<%= link_to game_favorites_path(@game), method: :delete, data: {confirm: "お気に入りから外しますか？"} do %>
+				<%= @game.favorites.count %>fav
+				<% end %>
+			</div>
+		<% else member_signed_in? %><!-- 未お気に入り -->
+			<div class="favorite favorite-not pull-right">
+				<%= link_to game_favorites_path(@game), method: :post, data: {confirm: "お気に入りしますか？"} do %>
+				<%= @game.favorites.count %>fav
+				<% end %>
+			</div>
+		<% end %>
+		<!-- /プレイ時間投票 -->
 	</div>
 
 	<div class="game-data-box clearfix">
