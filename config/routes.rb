@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :members, only: [:show, :edit, :update]
   get 'members/:id/delete_me' => 'members#delete_me', as: 'delete_me'
   put 'members/:id/delete_me' =>'members#withdraw', as: 'withdraw'
+  resources :game_reports, only: [:new, :create,:show]
 
   resources :games, only: [:show, :edit, :update, :create,:new] do
     resource :comments, only: [:create,:destroy]

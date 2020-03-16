@@ -1,0 +1,17 @@
+<%= @game.title %>の記事を通報する
+
+通報理由
+<%= form_for(@report, html:{class: "form-inline"}) do |f| %>
+  <%= f.radio_button :reason, 1 %>記事内のデータに間違いがあります
+  <%= f.radio_button :reason, 2 %>記事内に不適切な表現があります
+  <%= f.radio_button :reason, 3 %>この記事は特定の人・物を批判しています
+  <%= f.radio_button :reason, 4 %>同じゲームの記事が存在しています
+  <%= f.radio_button :reason, 0 %>上記以外の理由
+
+通報内容詳細(入力必須)
+  <%= f.text_field :report, class: "form-control",placeholder: "入力してください" %>
+  <%= f.hidden_field :game_id, :value => @game.id %>
+
+<%= f.submit "通報する", data: {confirm: "この内容で通報してよろしいですか？"},class: "btn btn-primary" %>
+
+<% end %>
