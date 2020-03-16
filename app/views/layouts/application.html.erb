@@ -26,12 +26,13 @@
               <button class="menu-li dropdown-toggle" data-toggle="dropdown">メニュー</button>
                 <ul class="dropdown-menu">
                   <li><%= link_to "マイページ", member_path(current_member) %></li>
+                  <li><%= link_to "新規投稿", new_game_path %></li>
                   <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
                 </ul>
           </li>
           <li><%= link_to "アバウト" %></li>
           <li><%= link_to "トップページ",root_path %></li>
-          <li class="login-name" id="login-name"><%= link_to current_member.name,member_path(current_member) %>さん</li>
+          <li class="login-name", id="login-name"><span><%= link_to current_member.name,member_path(current_member) %>さん</span></li>
         </ul>
       </nav>
     </div>
@@ -51,7 +52,8 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "管理者トップページ",admin_top_path %></li>
                   <li><%= link_to "会員一覧",admin_members_path %></li>
-                  <li><%= link_to "ジャンル一覧",admin_genres_path %></li>
+                  <li><%= link_to "ジャンル管理",admin_genres_path %></li>
+                  <li><%= link_to "対応機種管理",admin_models_path %></li>
                   <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
                 </ul>
             </li>

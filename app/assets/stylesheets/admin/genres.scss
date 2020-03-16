@@ -2,43 +2,4 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// ジャンル追加フォーム
-.genre-add{
-	margin: 20px 0;
-	background-color: white;
-	padding: 10px;
-	text-align: center;
-	border: 2px solid gray;
-	border-radius: 5px;
-}
 
-.genre-add-label{
-	display: inline-block;
-	font-size: 18px;
-	padding-right: 5px;
-	margin-bottom: 0;
-}
-
-// ジャンル一覧
-.table-genre h4{
-	margin: 0;
-}
-
-// ジャンル詳細
-.genre-edit-box{
-	background-color: white;
-	padding: 0 0 10px 0px;
-	border-radius: 5px;
-	border: 2px solid black;
-}
-.genre-edit-title{
-	font-size: 20px;
-	padding: 3px;
-	border-radius: 2px;
-	background-color: black;
-	color: white;
-}
-.genre-edit-content{
-	margin-top: 10px;
-	text-align: center;
-}

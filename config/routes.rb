@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :members, only: [:index,:show, :edit, :update]
-    resources :genres, only: [:index,:show,:create, :update,:destroy]
+    resources :genres, only: [:index,:create, :update]
+    resources :games, only: [:index,:show, :edit, :update,:destroy]
+    resources :models, only: [:index,:create, :update]
   end
   get 'admin/top' => 'admin#top', as: 'admin_top'
   devise_for :admins, controllers: {
@@ -21,5 +23,13 @@ Rails.application.routes.draw do
   resources :members, only: [:show, :edit, :update]
   get 'members/:id/delete_me' => 'members#delete_me', as: 'delete_me'
   put 'members/:id/delete_me' =>'members#withdraw', as: 'withdraw'
+
+  resources :games, only: [:show, :edit, :update, :create,:new] do
+    resource :comments, only: [:create,:destroy]
+    resource :favorites, only: [:create,:destroy]
+  end
+  put 'games/:id/hidden'      => 'games#hidden'     , as: 'hidden'
+  post 'games/:id/playtime_create'      => 'games#playtime_create'
+
 
 end
