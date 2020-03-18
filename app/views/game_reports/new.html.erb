@@ -1,17 +1,117 @@
-<%= @game.title %>の記事を通報する
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title">ページを通報する</h2>
+  </div>
+</div>
 
-通報理由
-<%= form_for(@report, html:{class: "form-inline"}) do |f| %>
-  <%= f.radio_button :reason, 1 %>記事内のデータに間違いがあります
-  <%= f.radio_button :reason, 2 %>記事内に不適切な表現があります
-  <%= f.radio_button :reason, 3 %>この記事は特定の人・物を批判しています
-  <%= f.radio_button :reason, 4 %>同じゲームの記事が存在しています
-  <%= f.radio_button :reason, 0 %>上記以外の理由
+<div class="row">
+  <div class="col-xs-12">
+    <div class="game-report-table">
+      <table>
+        <caption><h4>通報ページ情報</h4></caption>
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>タイトル</td>
+            <td colspan="4"><%= @game.title %></td>
+          </tr>
+          <tr>
+            <td>発売日</td>
+            <td><%= @game.release.strftime("%Y年%m月%d日") %></td>
+            <td></td>
+            <td>コンプリート要素</td>
+            <td>
+              <% if @game.complete == true %>
+              有
+              <% else %>
+              無
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>ゲームジャンル</td>
+            <td><%= @game.genre.name %></td>
+            <td></td>
+            <td>周回プレイ要素</td>
+            <td>
+              <% if @game.orbit == true %>
+              有
+              <% else %>
+              無
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>対応機種</td>
+            <td>
+              <% @models.each do |m| %>
+                <%= m.model.model %><br>
+              <% end %>
+            </td>
+            <td></td>
+            <td>マルチエンド方式</td>
+            <td>
+              <% if @game.multi_ending == true %>
+              有
+              <% else %>
+              無
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>最大プレイ人数</td>
+            <td><%= @game.number_of_people %>人</td>
+            <td></td>
+            <td>CEROレーティング</td>
+            <td><%= @game.cero_rating %></td>
+          </tr>
+          <tr>
+            <td>URL</td>
+            <td colspan="4"><%= @game.site_url %></td>
+          </tr>
+          <tr>
+            <td>内容</td>
+            <td colspan="4"><%= @game.text %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-通報内容詳細(入力必須)
-  <%= f.text_field :report, class: "form-control",placeholder: "入力してください" %>
-  <%= f.hidden_field :game_id, :value => @game.id %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="game-report">
+      <h4 class="text-center">通報内容入力欄</h4>
+      <h5><strong>選択してください</strong></h5>
+      <%= form_for(@report, html:{class: "form-group"}) do |f| %>
+        <div class="game-report-input">
+          <div class="radio">
+            <label><%= f.radio_button :reason,"記事内のデータに間違いがあります" %>記事内のデータに間違いがあります</label>
+          </div>
+          <div class="radio">
+            <label><%= f.radio_button :reason,"記事内に不適切な表現があります" %>記事内に不適切な表現があります</label>
+          </div>
+          <div class="radio">
+            <label><%= f.radio_button :reason,"この記事は特定の人・物を批判しています" %>この記事は特定の人・物を批判しています</label>
+          </div>
+          <div class="radio">
+            <label><%= f.radio_button :reason,"同じゲームの記事が存在しています" %>同じゲームの記事が存在しています</label>
+          </div>
+          <div class="radio">
+            <label><%= f.radio_button :reason,"その他の理由" %>上記以外の理由</label>
+          </div>
+        </div>
 
-<%= f.submit "通報する", data: {confirm: "この内容で通報してよろしいですか？"},class: "btn btn-primary" %>
+        <h5><strong>通報内容詳細(入力必須)</strong></h5>
+        <%= f.text_area :report, class: "form-control game-report-text",placeholder: "入力してください" %>
+        <%= f.hidden_field :game_id, :value => @game.id %>
+        <%= f.submit "通報する", data: {confirm: "この内容で通報してよろしいですか？"},class: "btn btn-danger btn-block btn-game-report" %>
 
-<% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

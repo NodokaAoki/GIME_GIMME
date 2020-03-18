@@ -6,7 +6,7 @@
 
 <div class="member-edit">
 
-	<%= form_for(@member,:url => {controller: "admin/members", :action => :update}) do |f| %>
+	<%= form_for([:admin,@member]) do |f| %>
 
 		<div class="row">
 			<div class="col-xs-3">

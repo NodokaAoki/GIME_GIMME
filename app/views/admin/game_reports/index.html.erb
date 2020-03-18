@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title" id="game-report">ゲーム記事通報一覧</h2>
+
+    <div class="report">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">ゲームタイトル</th>
+            <th class="text-center">作成者</th>
+            <th class="text-center">通報日時</th>
+            <th class="text-center">通報内容</th>
+            <th class="text-center">ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reports.each do |game| %>
+            <tr class="text-center table-cel">
+              <td><%= link_to game.game.title,game_path(game.id) %></td>
+              <td><%= link_to game.game.member.name,admin_member_path(game.game.member.id) %></td>
+              <td><%= game.created_at.strftime("%y/%m/%d %H:%M") %></td>
+              <td><%= game.reason %></td>
+              <td><%= game.status %></td>
+              <td><%= link_to "通報詳細",admin_game_report_path(game.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

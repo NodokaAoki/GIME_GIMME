@@ -2,6 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// ログイン
+.member-session-box{
+  border: 2px solid #58A289;
+  background-color: white;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.member-session-box img{
+  height: 70px;
+}
+.member-session-box .login-logo{
+  background-color: #58A289;
+  border-radius: 5px 5px 0 0 ;
+  text-align: center;
+  padding: 20px 0;
+  color: white;
+}
+.login-logo h4{
+  margin: 0;
+}
+.member-session-input{
+  padding: 20px 30px;
+}
+
+.member-session-input .btn-login, .btn-registration{
+  margin: 10px 0;
+}
+
+
+
 // 会員情報編集
 .member-edit{
 	background-color: white;

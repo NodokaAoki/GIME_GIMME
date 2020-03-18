@@ -1,1 +1,66 @@
-adminトップページ
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="text-center">未対応の通報 全<%= @game_reports.count + @comment_reports.count %>件</h2>
+    <h4 class="text-center">ゲーム記事通報<a href="#game-report"><%= @game_reports.count %></a>件、コメント通報<a href="#comment-report"><%= @comment_reports.count %></a>件</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title" id="game-report">ゲーム記事通報</h2>
+
+    <div class="report">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">ゲームタイトル</th>
+            <th class="text-center">作成者</th>
+            <th class="text-center">通報日時</th>
+            <th class="text-center">通報内容</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @game_reports.each do |game| %>
+            <tr class="text-center table-cel">
+              <td><%= link_to game.game.title,game_path(game.id) %></td>
+              <td><%= link_to game.game.member.name,admin_member_path(game.game.member.id) %></td>
+              <td><%= game.created_at.strftime("%y/%m/%d %H:%M") %></td>
+              <td><%= game.reason %></td>
+              <td><%= link_to "通報詳細",admin_game_report_path(game.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title" id="comment-report">コメント通報</h2>
+
+    <div class="report">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">投稿者</th>
+            <th class="text-center">通報日時</th>
+            <th class="text-center">通報内容</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comment_reports.each do |comment| %>
+            <tr class="text-center table-cel">
+              <td><%= link_to comment.comment.member.name,admin_member_path(comment.comment.member.id) %></td>
+              <td><%= comment.created_at.strftime("%y/%m/%d %H:%M") %></td>
+              <td><%= comment.reason %></td>
+              <td>通報詳細</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

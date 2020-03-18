@@ -1,3 +1,59 @@
 // Place all the styles related to the game_reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.game-report-table td{
+  padding: 3px 5px;
+  border: 1px solid #9DDAC9;
+}
+.game-report-table table{
+  margin: 0 auto;
+  width: 70%;
+}
+.game-report-table h4{
+  color: black;
+  margin: 0;
+}
+.game-report{
+  margin: 20px 0;
+  background-color: white;
+  padding: 20px 30px;
+}
+.game-report input[type="radio"]{
+  height: 34px;
+  margin-top: 0;
+}
+.game-report h5{
+  margin-bottom: 0;
+}
+.game-report .radio{
+  margin: 0;
+}
+.game-report-input{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.btn-game-report{
+  margin-top: 20px;
+}
+.game-report .game-report-text{
+  height: 100px;
+  margin-top: 5px;
+}
+.report-box{
+  width: 70%;
+  margin: 20px auto;
+  font-size: 16px;
+  background-color: #E4FAF1;
+  border-radius: 5px;
+  padding: 5px;
+}
+.report-details{
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.game-report h3{
+  color: #F01943;
+  text-decoration: underline;
+}

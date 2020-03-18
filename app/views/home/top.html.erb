@@ -21,12 +21,14 @@
       <% @newgames.each do |game| %>
         <div class="top-game">
           <h3><%= link_to game.title,game_path(game.id) %></h3>
-          <div class="top-count">
+          <ul>
+          <li">
             <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
             <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
-          </div>
-          <div class="top-genre"><%= game.genre.name %></div>
-          <div class="top-time"><%= time_ago_in_words(game.created_at) %>前</div>
+          </li>
+          <li class="top-genre"><%= game.genre.name %></li>
+          <li class="top-time"><%= time_ago_in_words(game.created_at) %>前</li>
+          </ul>
         </div>
       <% end %>
     </div>
@@ -35,14 +37,18 @@
   <div class="col-xs-6">
     <div class="top-game-box">
       <div class="top-game-title">
-      <h2  class="glyphicon glyphicon-bell">お気に入りランキング</h2>
+      <h2  class="glyphicon glyphicon-bell">ランキング</h2>
       </div>
       <% @rankgames.each.with_index(1) do |game, i| %>
         <div class="top-game">
           <h3><span class="rank-num"><%= i %>. </span><%= link_to game.title,game_path(game.id) %></h3>
-            <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
-            <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
-          <div class="top-genre"><%= game.genre.name %></div>
+          <ul>
+            <li>
+              <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
+              <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
+            </li>
+            <li class="top-genre"><%= game.genre.name %></li>
+          </ul>
         </div>
       <% end %>
     </div>

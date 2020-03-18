@@ -1,23 +1,13 @@
 <div class="row">
   <div class="col-xs-12">
-    <h2 class="page-title">通報完了</h2>
+    <h2 class="page-title">通報詳細</h2>
   </div>
 </div>
 
 <div class="game-report">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="text-center">以下の内容で通報を受け付けました。</h3>
-      <div class="report-box">
-        <h4><strong>通報内容</strong></h4>
-        <div>通報理由<div class="report-details"><%= @report.reason %></div></div>
-        <div>通報内容詳細<div class="report-details"><%= @report.report %></div></div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="game-report-table">
+      <div class="admin-game-report-table">
         <table>
           <caption><h4>通報ページ情報</h4></caption>
           <thead>
@@ -27,7 +17,9 @@
           <tbody>
             <tr>
               <td>タイトル</td>
-              <td colspan="4"><%= @game.title %></td>
+              <td colspan="4"><%= link_to @game.title,admin_game_path(@game.id),class: "game-report-title" %>
+                <%= link_to "編集する",edit_admin_game_path(@game.id),class: "btn btn-primary btn-sm" %>
+              </td>
             </tr>
             <tr>
               <td>発売日</td>
@@ -92,5 +84,34 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="admin-report-box">
+          <h4><strong>通報内容</strong></h4>
+          <div>通報理由
+            <div class="report-details"><%= @report.reason %></div>
+          </div>
+          <div>通報内容詳細
+            <div class="report-details"><%= @report.report %></div>
+          </div>
+          <div>ステータス
+            <div class="report-details">
+              <%= form_for([:admin,@report], html:{class: "form-inline"}) do |f| %>
+              <%= @report.status %>
+              <%= f.select :status, GameReport.statuses.keys.to_a, {include_blank: '選択'},class: "form-control" %>
+              <%= f.submit "変更",class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          <div>対応内容
+            <div class="report-details">
+              <%= form_for([:admin,@report]) do |f| %>
+              <%= @report.correspondence %>
+              <%= f.text_area :correspondence,class: "form-control",placeholder: "入力" %>
+              <%= f.submit "追加・変更",class: "btn btn-primary btn-block" %>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
-

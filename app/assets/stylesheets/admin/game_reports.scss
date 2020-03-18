@@ -1,0 +1,28 @@
+// Place all the styles related to the admin/game_reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-report-box{
+  width: 70%;
+  margin: 20px auto;
+  font-size: 16px;
+  background-color: #E2E2E2;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.game-report-title {
+  font-size: 24px;
+}
+.admin-game-report-table td{
+  padding: 3px 5px;
+  border: 1px solid black;
+}
+.admin-game-report-table table{
+  margin: 0 auto;
+  width: 70%;
+}
+.admin-game-report-table h4{
+  color: black;
+  margin: 0;
+}

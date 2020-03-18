@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:index,:create, :update]
     resources :games, only: [:index,:show, :edit, :update,:destroy]
     resources :models, only: [:index,:create, :update]
+    resources :game_reports, only: [:index,:show, :update]
+    resources :comment_reports, only: [:index,:show, :update]
   end
   get 'admin/top' => 'admin#top', as: 'admin_top'
   devise_for :admins, controllers: {
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
   get 'members/:id/delete_me' => 'members#delete_me', as: 'delete_me'
   put 'members/:id/delete_me' =>'members#withdraw', as: 'withdraw'
   resources :game_reports, only: [:new, :create,:show]
+  resources :comment_reports, only: [:new, :create,:show]
 
   resources :games, only: [:show, :edit, :update, :create,:new] do
     resource :comments, only: [:create,:destroy]
