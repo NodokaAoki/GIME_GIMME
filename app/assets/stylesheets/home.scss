@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .genre-box{
+  margin-top: 10px;
   background-color: #BFE3E1;
   width: 100%;
   padding: 15px 20px;
@@ -12,31 +13,47 @@
   padding: 0;
   margin: 0;
 }
-.genre-box li{
-  display: inline-block;
+.genre-item{
   background-color: #EDFBF7;
-  padding: 5px;
   border-radius: 3px;
   margin-right: 5px;
   border: 1px solid #94B3AB;
 }
+.genre-box li{
+  display: inline-block;
+}
+.genre-box li > a{
+  display: block;
+  text-decoration: none;
+  padding: 5px;
+  color: black;
+}
+.index-game li > a{
+  display: block;
+  text-decoration: none;
+  padding: 1px 2px;
+  color: black;
+}
+.genre-box li > a:hover,.index-game li > a:hover{
+  background-color: white;
+  color: gray;
+}
 .genre-box li:last-child{
   margin-right: 0;
 }
-
 .top-game-box{
   position: relative;
   background-color: white;
   padding: 10px 10px 20px 10px;
   margin-top: 20px;
 }
-.top-game{
+.index-game{
   padding: 0 10px 10px 10px;
   border-top: 1px solid #ccc;
   margin: 0 10px;
   color: #888;
 }
-.top-game:last-child{
+.index-game:last-child{
   border-bottom: 1px solid #ccc;
 }
 
@@ -49,10 +66,10 @@
   display: inline-block;
   margin: 0 auto;
 }
-.top-game li{
+.index-game li{
   display: inline-block;
 }
-.top-game ul{
+.index-game ul{
   padding: 0;
 }
 .top-genre{
@@ -67,4 +84,11 @@
 }
 .rank-num{
   color: black;
+}
+.search img{
+  height: 30px;
+  display: inline;
+}
+.search{
+  margin: 10px auto;
 }

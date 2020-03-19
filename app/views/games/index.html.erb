@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-12">
+      <h2 class="page-title"><%= @title %>一覧</h2>
+      <% @games.each do |game| %>
+        <div class="index-game" id="search-game">
+          <h3><%= link_to game.title,game_path(game.id) %></h3>
+          <ul>
+          <li>
+            <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
+            <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
+          </li>
+          <li class="genre-item"><%= link_to game.genre.name,games_path(id: game.genre.id) %></li>
+          <li class="index-date">作成日：<%= game.created_at.strftime("%Y年%m月%d日") %></li>
+          </ul>
+        </div>
+      <% end %>
+  </div>
+</div>

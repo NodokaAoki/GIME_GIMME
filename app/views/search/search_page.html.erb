@@ -1,0 +1,34 @@
+    <%= form_with(url: search_search_path,method: :get,local: true) do |f| %>
+      <%= f.text_field :title, placeholder: "ゲームタイトル入力",class: "form-control" %>
+      <div>
+      <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+      </div>
+      <div>
+      <%= f.collection_check_boxes :model_ids, Model.all.reverse_order, :id, :model %>
+      </div>
+
+      <div>
+      コンプリート要素
+        <%= f.radio_button :complete, true %>有
+        <%= f.radio_button :complete, false %>無
+      </div>
+
+      <div>
+      周回プレイ要素
+        <%= f.radio_button :orbit, true %>有
+        <%= f.radio_button :orbit, false %>無
+      </div>
+
+      <div>
+      マルチエンド方式
+        <%= f.radio_button :multi_ending, true %>有
+        <%= f.radio_button :multi_ending, false %>無
+      </div>
+
+      <div>
+        CEROレーティング
+      <%= f.collection_check_boxes :cero_ratings, Game.cero_ratings, :first, :first %>
+      </div>
+
+      <%= f.submit "検索",class: "btn btn-info btn-block" %>
+    <% end %>

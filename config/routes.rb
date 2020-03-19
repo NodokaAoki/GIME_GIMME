@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
+  get 'search/search_page'
   namespace :admin do
     resources :members, only: [:index,:show, :edit, :update]
     resources :genres, only: [:index,:create, :update]
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   resources :game_reports, only: [:new, :create,:show]
   resources :comment_reports, only: [:new, :create,:show]
 
-  resources :games, only: [:show, :edit, :update, :create,:new] do
+  resources :games, only: [:index, :show, :edit, :update, :create,:new] do
     resource :comments, only: [:create,:destroy]
     resource :favorites, only: [:create,:destroy]
   end

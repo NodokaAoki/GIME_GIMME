@@ -1,5 +1,17 @@
 class GamesController < ApplicationController
 
+  def index
+    @genres = Genre.where(status: 'ture')
+    if params[:id] == nil
+      @games = Game.all.page(params[:page]).reverse_order
+      @title = "ゲーム"
+    else
+      @games = Game.where(genre_id: params[:id]).page(params[:page]).reverse_order
+      genre = Genre.find(params[:id])
+      @title = genre.name + "ゲーム"
+    end
+  end
+
   def new
     @game = Game.new
     @playtime = @game.playtimes.build
