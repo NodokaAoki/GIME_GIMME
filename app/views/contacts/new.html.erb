@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title">お問い合わせページ</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="new-contact">
+      <h4 class="text-center">情報を入力してください</h4>
+      <%= form_for(@contact, html:{class: "form-group"}) do |f| %>
+
+        <h5><strong>お名前（入力必須）</strong></h5>
+        <%= f.text_field :name, autofocus: true,placeholder: "入力してください",class: "form-control" %>
+        <h5><strong>メールアドレス（入力必須）</strong></h5>
+        <%= f.email_field :email, class: "form-control",placeholder: "入力してください" %>
+
+
+        <h5><strong>お問い合わせ内容（入力必須）</strong></h5>
+        <%= f.text_area :contact_text, class: "form-control contact-text",placeholder: "入力してください" %>
+        <%= f.submit "問い合わせる",class: "btn btn-info btn-block btn-game-report" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

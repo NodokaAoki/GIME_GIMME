@@ -13,6 +13,7 @@
           <li>ID：<%= @member.id %></li>
           <li>通報回数：<%= @member.report_count %></li>
 		  <li>メールアドレス：<%= @member.email %></li>
+		  <li><%= link_to "警告メールを送信する",new_admin_warning_mail_path(member_id: @member.id),class: "btn btn-danger btn-xs" %></li>
 		</ul>
 	</div>
 </div>

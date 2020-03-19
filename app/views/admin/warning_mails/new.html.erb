@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title">警告メール送信</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="new-contact">
+      <h4 class="text-center">問い合わせ内容</h4>
+      <div class="data-contact">
+        <h5><strong>会員名</strong></h5>
+        <%= @member.name %>
+        <h5><strong>メールアドレス</strong></h5>
+        <%= @member.email %>
+        <h5><strong>通報回数</strong></h5>
+        <%= @member.report_count %>
+      </div>
+      <%= form_for([:admin, @warning], html:{class: "form-group"}) do |f| %>
+
+        <h5><strong>警告文入力</strong></h5>
+        <%= f.text_area :warning_text, class: "form-control contact-text",placeholder: "入力" %>
+        <%= f.hidden_field :member_id, :value => @member.id %>
+        <%= f.submit "警告メールを送信",class: "btn btn-info btn-block btn-game-report" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -44,8 +44,10 @@
       <div class="search text-center">
         <%= form_tag(search_search_path,method: :get,class: "form-inline") do %>
           <%= image_tag('search.png') %>
-          <%= text_field_tag :title, '',placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
-          <%= submit_tag "検索",class: "btn btn-default" %>
+            <div class="input-group">
+            <%= text_field_tag :keyword, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
+            <span class="input-group-btn"><%= submit_tag "検索",class: "btn btn-default" %></span>
+            </div>
           <%= link_to "詳細検索ページへ",search_search_page_path,class: "btn btn-info" %>
         <% end %>
       </div>
@@ -96,21 +98,23 @@
       </nav>
     </div>
   </header>
-<% end %>
-<!-- 検索 -->
-<%if !request.url.include?("/search_page") %><!-- 詳細検索ページでは非表示 -->
-  <div class="container">
-    <div class="col-xs-12">
-      <div class="search text-center">
-        <%= form_tag(search_search_path,method: :get,class: "form-inline") do %>
-          <%= image_tag('search.png') %>
-          <%= text_field_tag :keyword, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
-          <%= submit_tag "検索",class: "btn btn-default" %>
-          <%= link_to "詳細検索ページへ",search_search_page_path,class: "btn btn-info" %>
-        <% end %>
+  <!-- 検索 -->
+  <%if !request.url.include?("/search_page") %><!-- 詳細検索ページでは非表示 -->
+    <div class="container">
+      <div class="col-xs-12">
+        <div class="search text-center">
+          <%= form_tag(search_search_path,method: :get,class: "form-inline") do %>
+            <%= image_tag('search.png') %>
+            <div class="input-group">
+            <%= text_field_tag :keyword, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
+            <span class="input-group-btn"><%= submit_tag "検索",class: "btn btn-default" %></span>
+            </div>
+            <%= link_to "詳細検索ページへ",search_search_page_path,class: "btn btn-info" %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
     <div class="container">
@@ -118,4 +122,10 @@
     </div>
 
   </body>
+<footer class="footer">
+  <div class="container">
+    <%= link_to "お問い合わせ", new_contact_path %>
+  </div>
+</footer>
+
 </html>

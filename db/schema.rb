@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_043502) do
+ActiveRecord::Schema.define(version: 2020_03_19_153717) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2020_03_17_043502) do
     t.integer "member_id", null: false
     t.integer "game_id", null: false
     t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.text "contact_text", null: false
+    t.text "answer"
+    t.string "email", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -119,6 +128,13 @@ ActiveRecord::Schema.define(version: 2020_03_17_043502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "member_id"
+  end
+
+  create_table "warning_mails", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.text "warning_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

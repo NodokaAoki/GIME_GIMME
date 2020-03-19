@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title">問い合わせ対応</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="new-contact">
+      <h4 class="text-center">問い合わせ内容</h4>
+      <div class="data-contact">
+        <h5><strong>お名前</strong></h5>
+        <%= @contact.name %>
+        <h5><strong>メールアドレス</strong></h5>
+        <%= @contact.email %>
+        <h5><strong>問い合わせ内容</strong></h5>
+        <%= @contact.contact_text %>
+      </div>
+      <%= form_for([:admin, @contact], html:{class: "form-group"}) do |f| %>
+
+        <h5><strong>回答</strong></h5>
+        <%= f.text_area :answer, class: "form-control contact-text",placeholder: "入力" %>
+        <%= f.submit "回答を送信",class: "btn btn-info btn-block btn-game-report" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
