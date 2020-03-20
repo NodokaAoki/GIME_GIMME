@@ -1,0 +1,9 @@
+<div class="comment clearfix">
+  <div class="comment-day">
+    投稿日：<%= comment.created_at.strftime("%Y年%m月%d日") %>
+    　投稿者：<%= link_to comment.member.name,admin_member_path(comment.member.id) %>
+    <%= link_to "削除する",admin_comment_path(comment.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn-xs btn-danger btn-comment-destroy" %>
+  </div>
+  <div class="comment-text pull-left"><%= comment.comment %>
+  </div>
+</div>

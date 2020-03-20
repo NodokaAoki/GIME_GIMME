@@ -30,6 +30,7 @@
                   <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
                 </ul>
           </li>
+          <li><%= link_to "お問い合わせ", new_contact_path %></li>
           <li><%= link_to "アバウト" %></li>
           <li><%= link_to "トップページ",root_path %></li>
           <li class="login-name", id="login-name"><span><%= link_to current_member.name,member_path(current_member) %>さん</span></li>
@@ -45,7 +46,7 @@
         <%= form_tag(search_search_path,method: :get,class: "form-inline") do %>
           <%= image_tag('search.png') %>
             <div class="input-group">
-            <%= text_field_tag :keyword, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
+            <%= text_field_tag :title, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
             <span class="input-group-btn"><%= submit_tag "検索",class: "btn btn-default" %></span>
             </div>
           <%= link_to "詳細検索ページへ",search_search_page_path,class: "btn btn-info" %>
@@ -91,6 +92,7 @@
         <ul class="navber-right">
           <li><%= link_to "ログイン", member_session_path %></li>
           <li><%= link_to "アカウント作成", new_member_registration_path %></li>
+          <li><%= link_to "お問い合わせ", new_contact_path %></li>
           <li><%= link_to "アバウト" %></li>
           <li><%= link_to "トップページ",root_path %></li>
           <li class="login-name" id="login-name">ゲストさん</li>
@@ -106,7 +108,7 @@
           <%= form_tag(search_search_path,method: :get,class: "form-inline") do %>
             <%= image_tag('search.png') %>
             <div class="input-group">
-            <%= text_field_tag :keyword, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
+            <%= text_field_tag :title, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
             <span class="input-group-btn"><%= submit_tag "検索",class: "btn btn-default" %></span>
             </div>
             <%= link_to "詳細検索ページへ",search_search_page_path,class: "btn btn-info" %>
@@ -120,12 +122,7 @@
     <div class="container">
     <%= yield %>
     </div>
-
+<footer></footer>
   </body>
-<footer class="footer">
-  <div class="container">
-    <%= link_to "お問い合わせ", new_contact_path %>
-  </div>
-</footer>
 
 </html>

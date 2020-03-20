@@ -1,34 +1,78 @@
+<div class="row">
+  <div class="col-xs-12">
+  <h2 class="page-title">詳細検索ページ</h2>
+  </div>
+</div>
+
+
+<div class="search-box">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="text-center">絞り込みたい条件を入力・選択してください（一部空欄でも検索できます）</h4>
+    </div>
+  </div>
     <%= form_with(url: search_search_path,method: :get,local: true) do |f| %>
-      <%= f.text_field :title, placeholder: "ゲームタイトル入力",class: "form-control" %>
-      <div>
+  <div class="row search-item">
+    <div class="col-xs-4">
+      ゲームタイトル
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :title, placeholder: "入力",class: "form-control" %>
+    </div>
+  </div>
+  <div class="row search-item">
+    <div class="col-xs-4">
+      ゲームジャンル（複数選択可）
+    </div>
+    <div class="col-xs-8">
       <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
-      </div>
-      <div>
+    </div>
+  </div>
+  <div class="row search-item">
+    <div class="col-xs-4">
+      対応機種（複数選択可）
+    </div>
+    <div class="col-xs-8">
       <%= f.collection_check_boxes :model_ids, Model.all.reverse_order, :id, :model %>
-      </div>
-
-      <div>
+    </div>
+  </div>
+  <div class="row search-item">
+    <div class="col-xs-4">
       コンプリート要素
-        <%= f.radio_button :complete, true %>有
-        <%= f.radio_button :complete, false %>無
-      </div>
-
-      <div>
+    </div>
+    <div class="col-xs-8">
+        <label><%= f.radio_button :complete, true %>有</label>
+        <label><%= f.radio_button :complete, false %>無</label>
+    </div>
+  </div>
+  <div class="row search-item">
+    <div class="col-xs-4">
       周回プレイ要素
-        <%= f.radio_button :orbit, true %>有
-        <%= f.radio_button :orbit, false %>無
-      </div>
-
-      <div>
+    </div>
+    <div class="col-xs-8">
+        <label><%= f.radio_button :orbit, true %>有</label>
+        <label><%= f.radio_button :orbit, false %>無</label>
+    </div>
+  </div>
+  <div class="row search-item">
+    <div class="col-xs-4">
       マルチエンド方式
-        <%= f.radio_button :multi_ending, true %>有
-        <%= f.radio_button :multi_ending, false %>無
-      </div>
-
-      <div>
-        CEROレーティング
+    </div>
+    <div class="col-xs-8">
+        <label><%= f.radio_button :multi_ending, true %>有</label>
+        <label><%= f.radio_button :multi_ending, false %>無</label>
+    </div>
+  </div>
+  <div class="row search-item">
+    <div class="col-xs-4">
+      CEROレーティング
+    </div>
+    <div class="col-xs-8">
       <%= f.collection_check_boxes :cero_ratings, Game.cero_ratings, :first, :first %>
-      </div>
-
+    </div>
+    <div class="col-xs-12">
       <%= f.submit "検索",class: "btn btn-info btn-block" %>
+    </div>
+  </div>
     <% end %>
+</div>

@@ -1,48 +1,41 @@
+
 <div class="row">
-	<div class="col-xs-11 member-data-box">
-		<ul class="member-data">
-          <li><%= @member.name %>さん
-          	<% if @member.status == '有効' %>
-				<span class="label label-success">有効</span>
-			<%  elsif @member.status == '退会' %>
-				<span class="label label-danger">退会</span>
-			<%  else %>
-				<span class="label label-warning">停止</span>
-			<% end %>
-          </li>
-          <li>ID：<%= @member.id %></li>
-          <li>通報回数：<%= @member.report_count %></li>
-		  <li>メールアドレス：<%= @member.email %></li>
-		  <li><%= link_to "警告メールを送信する",new_admin_warning_mail_path(member_id: @member.id),class: "btn btn-danger btn-xs" %></li>
-		</ul>
+	<div class="col-xs-3">
+		<%= render 'side_menu',member: @member,game_reports: @game_reports,comment_reports: @comment_reports %>
 	</div>
-</div>
+	<div class="col-xs-9">
+		<div class="member-data">
+			<h2 class="game-index">投稿記事一覧</h2>
 
+			<div class="games">
+				<% if @games.count == 0 %>
+				投稿記事はありません。
+				<% end %>
 
-<div class="row">
-	<div class="col-xs-12">
-		<h2 class="game-index">投稿記事一覧</h2>
-
-		<div class="games">
-			<table class= "table table-hover">
-				<thead>
-					<tr>
-					</tr>
-				</thead>
-				<tbody>
-					<% @games.each do |game| %>
-						<tr class="text-center">
-							<td><%= link_to game_path(game.id)do %><%= game.title %><% end %></td>
-							<td>作成日：<%= game.created_at.strftime("%Y年%m月%d日") %></td>
-							<td>いいね数</td>
-							<td>コメント数</td>
-							<td class="text-center"><%= link_to "編集する", edit_game_path(game.id),class: "btn btn-info btn-sm btn-edit" %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
+				<% @games.each do |game| %>
+					<div class="member-game-index">
+						<span class="member-game-title">
+							<%= link_to admin_game_path(game.id) do %><%= game.title %><% end %>
+							</span>
+							<% if game.status == true %>
+								<span class="label label-primary member-game-status">公開中</span>
+							<% else %>
+								<span class="label label-danger member-game-status">非公開</span>
+							<% end%>
+						<ul>
+							<li class="game-day"><%= game.created_at.strftime("%Y年%m月%d日") %>作成</li>
+							<li class="text-center game-count">
+								<span class="glyphicon glyphicon-heart"></span>
+								 <%= game.favorites.count %>
+								<span class="glyphicon glyphicon-comment"></span>
+								 <%= game.comments.count %>
+							</li>
+							<li><%= link_to "編集する", edit_admin_game_path(game.id),class: "btn btn-info btn-sm btn-edit" %></li>
+						</ul>
+					</div>
+				<% end %>
+			</div>
+        <div class="text-center"><%= paginate @games %></div>
 		</div>
 	</div>
 </div>
-
-

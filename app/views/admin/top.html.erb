@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <h2 class="text-center">未対応の通報 全<%= @game_reports.count + @comment_reports.count %>件</h2>
-    <h4 class="text-center">ゲーム記事通報<a href="#game-report"><%= @game_reports.count %></a>件、コメント通報<a href="#comment-report"><%= @comment_reports.count %></a>件</h4>
+    <h4 class="text-center">ゲーム：<a href="#game-report"><%= @game_reports.count %></a>件、コメント：<a href="#comment-report"><%= @comment_reports.count %></a>件</h4>
   </div>
 </div>
 
@@ -23,7 +23,7 @@
         <tbody>
           <% @game_reports.each do |game| %>
             <tr class="text-center table-cel">
-              <td><%= link_to game.game.title,game_path(game.id) %></td>
+              <td><%= link_to game.game.title,admin_game_path(game.game.id) %></td>
               <td><%= link_to game.game.member.name,admin_member_path(game.game.member.id) %></td>
               <td><%= game.created_at.strftime("%y/%m/%d %H:%M") %></td>
               <td><%= game.reason %></td>
@@ -45,6 +45,7 @@
         <thead>
           <tr>
             <th class="text-center">投稿者</th>
+            <th class="text-center">投稿記事</th>
             <th class="text-center">通報日時</th>
             <th class="text-center">通報内容</th>
             <th></th>
@@ -54,9 +55,10 @@
           <% @comment_reports.each do |comment| %>
             <tr class="text-center table-cel">
               <td><%= link_to comment.comment.member.name,admin_member_path(comment.comment.member.id) %></td>
+              <td><%= link_to comment.comment.game.title,admin_game_path(comment.comment.game.id) %></td>
               <td><%= comment.created_at.strftime("%y/%m/%d %H:%M") %></td>
               <td><%= comment.reason %></td>
-              <td>通報詳細</td>
+              <td><%= link_to "通報詳細",admin_comment_report_path(comment.id) %></td>
             </tr>
           <% end %>
         </tbody>

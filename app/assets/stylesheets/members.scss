@@ -55,3 +55,76 @@
 .game-index{
 	margin-top: 30px;
 }
+
+// マイページ
+.member-data{
+  background-color: white;
+  padding: 20px;
+  margin: 0 20px;
+}
+.member-data h2{
+  margin-top:0;
+}
+// 投稿記事一覧
+.member-game-index{
+  background-color: white;
+  border-top: 1px solid #ccc;
+  padding: 10px 20px;
+}
+.member-game-index:last-child{
+  border-bottom: 1px solid #ccc;
+}
+.member-game-index li{
+  display: inline-block;
+}
+.member-game-index ul{
+  margin:0;
+  padding: 0;
+}
+.member-game-index h3{
+  margin: 5px 0;
+  padding: 0;
+}
+.member-game-title{
+  font-size: 28px;
+}
+.member-game-status{
+  font-size: 14px;
+}
+// マイページサイドメニュー
+.member-side-menu{
+  background-color: white;
+  margin: 10px;
+  border: 2px solid #55C5B8;
+  border-radius: 3px;
+}
+.member-side-menu-li{
+  border-bottom: 1px solid #55C5B8;
+  padding: 10px 10px;
+}
+.member-side-menu-li:last-child{
+  border-bottom: none;
+}
+.member-side-menu a{
+  display: block;
+  color: black;
+}
+.member-side-menu a:hover{
+  text-decoration: none;
+}
+.member-side-menu-li:hover{
+  background-color: #C3F1E5;
+}
+.warning-mail a{
+  color: red;
+}
+// 退会ページ
+.delete-me-box{
+  background-color: white;
+  padding: 20px 40px;
+  width: 70%;
+  margin: 0 auto;
+}
+.delete-me-title{
+  color: red;
+}

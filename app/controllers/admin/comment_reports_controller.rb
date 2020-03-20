@@ -11,7 +11,7 @@ class Admin::CommentReportsController < AdminController
   end
 
   def index
-    @reports = CommentReport.all.reverse_order
+    @reports = CommentReport.all.page(params[:page]).per(10).reverse_order
   end
 
   private

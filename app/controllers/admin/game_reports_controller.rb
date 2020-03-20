@@ -12,7 +12,7 @@ class Admin::GameReportsController < AdminController
   end
 
   def index
-    @reports = GameReport.all.reverse_order
+    @reports = GameReport.all.page(params[:page]).per(10).reverse_order
   end
 
   private

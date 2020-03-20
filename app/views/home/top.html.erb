@@ -17,12 +17,13 @@
     <div class="top-game-box">
       <div class="top-game-title">
         <h2 class="glyphicon glyphicon-bullhorn">新着記事</h2>
+        <p><%= link_to "▶︎もっと見る",games_path %></p>
       </div>
       <% @newgames.each do |game| %>
         <div class="index-game">
           <h3><%= link_to game.title,game_path(game.id) %></h3>
           <ul>
-          <li">
+          <li>
             <span class="glyphicon glyphicon-heart"></span> <%= game.favorites.count %>
             <span class="glyphicon glyphicon-comment"></span> <%= game.comments.count %>
           </li>
@@ -38,6 +39,7 @@
     <div class="top-game-box">
       <div class="top-game-title">
       <h2  class="glyphicon glyphicon-bell">ランキング</h2>
+      <p><%= link_to "▶︎もっと見る",ranking_path %></p>
       </div>
       <% @rankgames.each.with_index(1) do |game, i| %>
         <div class="index-game">

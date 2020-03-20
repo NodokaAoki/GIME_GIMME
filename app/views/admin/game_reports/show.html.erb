@@ -22,6 +22,11 @@
               </td>
             </tr>
             <tr>
+              <td>投稿者</td>
+              <td colspan="4"><%= link_to @game.member.name,admin_member_path(@game.member.id) %>
+              </td>
+            </tr>
+            <tr>
               <td>発売日</td>
               <td><%= @game.release.strftime("%Y年%m月%d日") %></td>
               <td></td>

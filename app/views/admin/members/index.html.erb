@@ -11,14 +11,13 @@
 						<th class="text-center">メールアドレス</th>
 						<th class="text-center">ステータス</th>
 						<th class="text-center">通報回数</th>
-						<th colspan="2"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @members.each do |member| %>
 						<tr class="text-center table-cel">
 							<td><%= member.id %></td>
-							<td><%= member.name %></td>
+							<td><%= link_to member.name,admin_member_path(member.id) %></td>
 							<td><%= member.email %></td>
 							<td><p class="status">
 								<% if member.status == '有効' %>
@@ -30,11 +29,11 @@
 								<% end %></p>
 							</td>
 							<td><%= member.report_count %></td>
-							<td class="text-center"><%= link_to "編集する", edit_admin_member_path(member.id),class: "btn btn-info btn-sm btn-edit" %><%= link_to "投稿一覧",admin_member_path(member.id),class: "btn btn-info btn-sm btn-show" %></td>
 						</tr>
 					<% end %>
 				</tbody>
 			</table>
 		</div>
+    <div class="text-center"><%= paginate @members %></div>
 	</div>
 </div>

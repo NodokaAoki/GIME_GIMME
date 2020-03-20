@@ -1,0 +1,49 @@
+<div class="row">
+
+  <div class="col-xs-12">
+    <h1 class="page-title"><%= @member.name %>さんのマイページ</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3">
+    <%= render 'side_menu' %>
+  </div>
+  <div class="col-xs-9">
+    <div class="member-data">
+      <h2 class="game-index">お気に入り記事一覧</h2>
+
+      <div class="games">
+        <% if @favorites.count == 0 %>
+        お気に入りした記事はありません。
+        <% end %>
+
+        <% @favorites.each do |fav| %>
+          <div class="member-game-index">
+            <span class="member-game-title">
+              <%= link_to game_path(fav.game.id) do %><%= fav.game.title %><% end %>
+              </span>
+            <ul>
+              <li class="game-day"><%= fav.game.created_at.strftime("%Y年%m月%d日") %>作成</li>
+              <li class="text-center game-count">
+                <span class="glyphicon glyphicon-heart"></span>
+                 <%= fav.game.favorites.count %>
+                <span class="glyphicon glyphicon-comment"></span>
+                 <%= fav.game.comments.count %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+        <div class="text-center"><%= paginate @favorites %></div>
+    </div>
+  </div>
+</div>

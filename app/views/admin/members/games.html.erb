@@ -1,0 +1,41 @@
+
+<div class="row">
+  <div class="col-xs-3">
+    <%= render 'side_menu',member: @member,game_reports: @game_reports,comment_reports: @comment_reports %>
+  </div>
+  <div class="col-xs-9">
+    <div class="member-data">
+      <h2 class="game-index">投稿記事一覧</h2>
+
+      <div class="games">
+        <% if @games.count == 0 %>
+        投稿記事はありません。
+        <% end %>
+
+        <% @games.each do |game| %>
+          <div class="member-game-index">
+            <span class="member-game-title">
+              <%= link_to admin_game_path(game.id) do %><%= game.title %><% end %>
+              </span>
+              <% if game.status == true %>
+                <span class="label label-primary member-game-status">公開中</span>
+              <% else %>
+                <span class="label label-danger member-game-status">非公開</span>
+              <% end%>
+            <ul>
+              <li class="game-day"><%= game.created_at.strftime("%Y年%m月%d日") %>作成</li>
+              <li class="text-center game-count">
+                <span class="glyphicon glyphicon-heart"></span>
+                 <%= game.favorites.count %>
+                <span class="glyphicon glyphicon-comment"></span>
+                 <%= game.comments.count %>
+              </li>
+              <li><%= link_to "編集する", edit_admin_game_path(game.id),class: "btn btn-info btn-sm btn-edit" %></li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+        <div class="text-center"><%= paginate @games %></div>
+    </div>
+  </div>
+</div>

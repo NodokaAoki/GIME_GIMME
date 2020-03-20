@@ -1,2 +1,44 @@
-<h1>Admin::Games#index</h1>
-<p>Find me in app/views/admin/games/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title" id="game-report">ゲーム記事一覧</h2>
+
+    <div class="games">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">ゲームタイトル</th>
+            <th class="text-center">ステータス</th>
+            <th class="text-center">通報数</th>
+            <th class="text-center">ジャンル</th>
+            <th class="text-center">作成者</th>
+            <th class="text-center">作成日</th>
+            <th class="text-center">データ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |game| %>
+            <tr class="text-center table-cel">
+              <td><%= link_to game.title,admin_game_path(game.id) %></td>
+              <td>
+                <% if game.status == true %>
+                <span class="label label-primary member-game-status">公開中</span>
+              <% else %>
+                <span class="label label-danger member-game-status">非公開</span>
+              <% end%>
+              </td>
+              <td><%= game.game_reports.count %></td>
+              <td><%= game.genre.name %></td>
+              <td><%= link_to game.member.name,admin_member_path(game.member.id) %></td>
+              <td><%= game.created_at.strftime("%Y/%m/%d") %></td>
+              <td><span class="glyphicon glyphicon-heart"></span>
+                 <%= game.favorites.count %>
+                <span class="glyphicon glyphicon-comment"></span>
+                 <%= game.comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center"><%= paginate @games %></div>
+  </div>
+</div>

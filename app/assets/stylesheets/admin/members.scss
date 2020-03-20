@@ -23,26 +23,33 @@
 
 // 会員詳細
 .member-data-box{
-	border: 2px solid black;
-	border-radius: 3px;
-	background-color: white;
-	padding: 5px;
-	margin: 0 20px;
+	background-color: black;
+	padding: 10px;
 }
-.member-data-box > ul{
-	margin: 5px;
+.member-data-box > .member-name{
+	margin: 0;
 	padding: 0;
-}
-.member-data > li{
-	display: inline-block;
-	margin-right: 20px;
-	font-size: 16px;
-}
-.member-data > li:last-child{
-	margin-right: 0;
+	background-color: black;
+  color: white
 }
 
-
+// サイドメニュー
+.admin-member-side-menu{
+  background-color: white;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+.admin-member-side-menu a{
+  display: block;
+  color: black;
+}
+.admin-member-side-menu a:hover{
+  text-decoration: none;
+}
+.admin-member-side-menu-li:hover{
+  background-color: #C3F1E5;
+}
 // 会員情報編集
 .member-edit{
 	background-color: white;

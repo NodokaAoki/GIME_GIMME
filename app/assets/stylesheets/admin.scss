@@ -18,6 +18,25 @@
 	background-color: black;
 }
 
+// ログイン
+.admin-session-box{
+  border: 2px solid black;
+  background-color: white;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.admin-session-box img{
+  height: 70px;
+}
+.admin-session-box .login-logo{
+  background-color: black;
+  border-radius: 5px 5px 0 0 ;
+  text-align: center;
+  padding: 20px 0;
+  color: white;
+}
+
 // 管理者用テーブルデザイン
 .table-admin h4{
 	margin: 0;

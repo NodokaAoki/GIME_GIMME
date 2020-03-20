@@ -1,0 +1,38 @@
+<div class="row">
+
+  <div class="col-xs-12">
+    <h1 class="page-title"><%= @member.name %>さんのマイページ</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3">
+    <%= render 'side_menu' %>
+  </div>
+  <div class="col-xs-9">
+    <div class="member-data">
+      <h2 class="game-index">コメント履歴</h2>
+
+      <div class="games">
+        <% if @comments.count == 0 %>
+        コメントした記事はありません。
+        <% end %>
+
+        <% @comments.each do |comment| %>
+          <div class="member-game-index clearfix">
+            <div class="member-comment-text pull-left">
+              <p><%= comment.comment %></p>
+            </div>
+            <div class="member-comment-data pull-right">
+              <div class="game-day"><%= comment.created_at.strftime("%Y年%m月%d日") %>投稿</div>
+              <div class="text-center game-count">
+                <%= link_to "記事詳細へ",game_path(comment.game.id),class: "btn btn-info btn-sm" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+        <div class="text-center"><%= paginate @comments %></div>
+    </div>
+  </div>
+</div>

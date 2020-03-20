@@ -1,10 +1,12 @@
+<div class="text-center"><%= flash[:notice] %></div>
+
 <% if @game.status == false %>
-	このゲーム記事は非公開です。
+	<h2 class="text-center">このゲーム記事は非公開です。</h4>
 <!-- 作成者なら編集ボタン -->
 <div class="row">
 	<% if member_signed_in? && @game.member.id == current_member.id %>
-		<div class="col-xs-12">
-			<%= link_to "編集する",edit_game_path(@game), class: "btn-sm btn-info" %>
+		<div class="col-xs-12 text-center">
+			<%= link_to "編集する",edit_game_path(@game), class: "btn btn-info" %>
 		</div>
 	<% end %>
 </div>
@@ -156,6 +158,7 @@
 				<div class="comments">
 					<%= render @comments %>
 				</div>
+				<div class="text-center"><%= paginate @comments %></div>
 			</div>
 
 			<!-- コメント投稿フォーム -->

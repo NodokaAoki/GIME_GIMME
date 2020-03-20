@@ -7,6 +7,7 @@
         <thead>
           <tr>
             <th class="text-center">投稿者</th>
+            <th class="text-center">投稿記事</th>
             <th class="text-center">通報日時</th>
             <th class="text-center">通報内容</th>
             <th class="text-center">ステータス</th>
@@ -17,6 +18,7 @@
           <% @reports.each do |comment| %>
             <tr class="text-center table-cel">
               <td><%= link_to comment.comment.member.name,admin_member_path(comment.comment.member.id) %></td>
+              <td><%= link_to comment.comment.game.title,admin_game_path(comment.comment.game.id) %></td>
               <td><%= comment.created_at.strftime("%y/%m/%d %H:%M") %></td>
               <td><%= comment.reason %></td>
               <td><%= comment.status %></td>
@@ -26,5 +28,6 @@
         </tbody>
       </table>
     </div>
+    <div class="text-center"><%= paginate @reports %></div>
   </div>
 </div>

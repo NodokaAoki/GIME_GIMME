@@ -1,12 +1,14 @@
 class GamesController < ApplicationController
+  before_action :authenticate_member!, only: [:new, :edit, :create, :update, :hidden, :delete]
+
 
   def index
     @genres = Genre.where(status: 'ture')
     if params[:id] == nil
-      @games = Game.all.page(params[:page]).reverse_order
+      @games = Game.where(status: true).page(params[:page]).per(10).reverse_order
       @title = "ゲーム"
     else
-      @games = Game.where(genre_id: params[:id]).page(params[:page]).reverse_order
+      @games = Game.where(genre_id: params[:id]).where(status: true).page(params[:page]).per(10).reverse_order
       genre = Genre.find(params[:id])
       @title = genre.name + "ゲーム"
     end
@@ -30,7 +32,7 @@ class GamesController < ApplicationController
     @models = GameModel.where(game_id: @game.id)
     @playtimes = @game.playtimes
     @playtime = Playtime.new
-    @comments = @game.comments.reverse_order
+    @comments = @game.comments.page(params[:page]).per(5).reverse_order
     @comment = Comment.new
   end
 
@@ -44,17 +46,26 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+    if @game.member != current_member
+      redirect_to game_path(@game)
+    end
     @genres = Genre.where(status: 'true')
   end
 
   def update
     @game = Game.find(params[:id])
+    if @game.member != current_member
+      redirect_to game_path(@game)
+    end
     @game.update!(game_params)
     redirect_to game_path(@game.id)
   end
 
   def hidden
     @game = Game.find(params[:id])
+    if @game.member != current_member
+      redirect_to game_path(@game)
+    end
     if @game.status == true
       @game.status = false
       @game.save!
@@ -68,6 +79,9 @@ class GamesController < ApplicationController
 
   def delete
     @game = Game.find(params[:id])
+    if @game.member != current_member
+      redirect_to game_path(@game)
+    end
     @game.destoy
     redirect_to root_path, notice: "記事を完全に削除しました。"
   end

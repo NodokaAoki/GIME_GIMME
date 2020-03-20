@@ -1,11 +1,17 @@
 class Admin::GamesController < AdminController
   def index
+    @games = Game.includes(:game_reports).all
+                  .page(params[:page]).per(10)
+                  .reverse_order
   end
 
   def show
     @game = Game.find(params[:id])
+    @models = GameModel.where(game_id: @game.id)
     @playtimes = @game.playtimes
     @playtime = Playtime.new
+    @comments = @game.comments.page(params[:page]).per(5).reverse_order
+    @comment = Comment.new
   end
 
   def edit

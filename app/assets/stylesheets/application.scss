@@ -16,9 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
 // header
-
 // 会員ヘッダー基本色
 #header{
 	color: white;
@@ -125,4 +123,13 @@ table{
 // テーブルの文字上下中央揃え
 .table .table-cel td{
 	vertical-align: middle;
+}
+
+// ページネーション
+.pagenation a{
+	display: block;
+}
+
+footer{
+	margin-top:20px;
 }

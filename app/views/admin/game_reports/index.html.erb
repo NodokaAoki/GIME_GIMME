@@ -17,7 +17,7 @@
         <tbody>
           <% @reports.each do |game| %>
             <tr class="text-center table-cel">
-              <td><%= link_to game.game.title,game_path(game.id) %></td>
+              <td><%= link_to game.game.title, admin_game_path(game.game.id) %></td>
               <td><%= link_to game.game.member.name,admin_member_path(game.game.member.id) %></td>
               <td><%= game.created_at.strftime("%y/%m/%d %H:%M") %></td>
               <td><%= game.reason %></td>
@@ -28,5 +28,6 @@
         </tbody>
       </table>
     </div>
+    <div class="text-center"><%= paginate @reports %></div>
   </div>
 </div>

@@ -7,7 +7,15 @@
 <%= form_for(@game, html:{class: "form-inline"}) do |f| %>
 
 	<div class="edit-game-form game-form">
-
+	<div class="edit-game-form-btn text-center">
+		<span><%= @game.title %></span>
+		<% if @game.status == true %>
+			<%= link_to "非公開にする",hidden_path, method: :put, data: {confirm: "本当に非公開にしますか？"}, class: "btn btn-warning btn-sm" %>
+		<%  else %>
+			<%= link_to "公開にする",hidden_path, method: :put, data: {confirm: "本当に公開しますか？"}, class: "btn btn-success btn-game btn-sm" %>
+		<% end %>
+		<%= link_to "完全に削除する",hidden_path, method: :destroy, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-game btn-sm" %>
+	</div>
 		<div class="row">
 			<div class="col-xs-3">
 				ゲームタイトル
@@ -126,22 +134,5 @@
 			<%= f.submit "編集完了",class: "btn btn-primary btn-block btn-lg btn-game" %>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-					<% if @game.status == true %>
-						<%= link_to "非公開にする",hidden_path, method: :put, data: {confirm: "本当に非公開にしますか？"}, class: "btn-sm btn-danger btn-block btn-lg btn-game text-center" %>
-					<%  else %>
-						<%= link_to "公開にする",hidden_path, method: :put, data: {confirm: "本当に公開しますか？"}, class: "btn-sm btn-success btn-block btn-lg btn-game text-center" %>
-					<% end %>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-			<%= link_to "完全に削除する",hidden_path, method: :destroy, data: {confirm: "本当に削除しますか？"}, class: "btn-danger btn-block btn-lg btn-game text-center" %>
-			</div>
-		</div>
-
 
 <% end %>
