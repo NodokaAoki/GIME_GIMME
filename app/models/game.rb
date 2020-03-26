@@ -13,6 +13,16 @@ class Game < ApplicationRecord
 
 	enum cero_rating:{"A(全年齢)": 0,"B(12歳以上)": 1,"C(15歳以上)": 2,"D(17歳以上)": 3,"Z(18歳以上)": 4}
 
+  validates :title, presence: true
+  validates :release, presence: true
+  validates :number_of_people, presence: true
+  validates :text, presence: true
+  validates :complete, presence: true
+  validates :orbit, presence: true
+  validates :multi_ending, presence: true
+  validates :cero_rating, presence: true
+  validates :model_ids, presence: true
+
 	# プレイ時間の追加済みか
 	def playtime_by?(member)
 		playtimes.where(member_id: member.id).exists?

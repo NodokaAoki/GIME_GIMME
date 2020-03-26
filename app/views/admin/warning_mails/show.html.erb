@@ -1,2 +1,25 @@
-<h1>Admin::WarningMails#show</h1>
-<p>Find me in app/views/admin/warning_mails/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title">警告メール送信</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="new-contact">
+      <div class="data-contact">
+        <h5><strong>会員名</strong></h5>
+        <%= @warning.member.name %>
+        <h5><strong>メールアドレス</strong></h5>
+        <%= @warning.member.email %>
+        <h5><strong>通報回数</strong></h5>
+        <%= @warning.member.report_count %>
+      </div>
+
+        <h4 class="text-center">警告内容</h4>
+        <div class="data-contact">
+        <%= @warning.warning_text %>
+        </div>
+    </div>
+  </div>
+</div>

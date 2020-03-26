@@ -1,64 +1,74 @@
+<%= flash[:notice] %>
+
 <div class="row">
   <div class="col-xs-12">
-    <h2 class="text-center">未対応の通報 全<%= @game_reports.count + @comment_reports.count %>件</h2>
-    <h4 class="text-center">ゲーム：<a href="#game-report"><%= @game_reports.count %></a>件、コメント：<a href="#comment-report"><%= @comment_reports.count %></a>件</h4>
+    <h2 class="page-title text-center">未対応の通報、問い合わせ</h2>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-xs-12">
-    <h2 class="page-title" id="game-report">ゲーム記事通報</h2>
+  <div class="col-xs-4">
+    <h3 class="text-center" id="game-report">ゲーム記事通報<%= @game_reports.count %>件</h3>
 
     <div class="report">
       <table class= "table table-hover table-bordered table-admin">
         <thead>
           <tr>
-            <th class="text-center">ゲームタイトル</th>
-            <th class="text-center">作成者</th>
             <th class="text-center">通報日時</th>
             <th class="text-center">通報内容</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @game_reports.each do |game| %>
             <tr class="text-center table-cel">
-              <td><%= link_to game.game.title,admin_game_path(game.game.id) %></td>
-              <td><%= link_to game.game.member.name,admin_member_path(game.game.member.id) %></td>
-              <td><%= game.created_at.strftime("%y/%m/%d %H:%M") %></td>
+              <td><%= link_to admin_game_report_path(game.id) do %><%= game.created_at.strftime("%y/%m/%d %H:%M") %><% end %></td>
               <td><%= game.reason %></td>
-              <td><%= link_to "通報詳細",admin_game_report_path(game.id) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <h2 class="page-title" id="comment-report">コメント通報</h2>
+  <div class="col-xs-4">
+    <h3 class="text-center" id="comment-report">コメント通報<%= @comment_reports.count %>件</h3>
 
     <div class="report">
       <table class= "table table-hover table-bordered table-admin">
         <thead>
           <tr>
-            <th class="text-center">投稿者</th>
-            <th class="text-center">投稿記事</th>
             <th class="text-center">通報日時</th>
             <th class="text-center">通報内容</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @comment_reports.each do |comment| %>
             <tr class="text-center table-cel">
-              <td><%= link_to comment.comment.member.name,admin_member_path(comment.comment.member.id) %></td>
-              <td><%= link_to comment.comment.game.title,admin_game_path(comment.comment.game.id) %></td>
-              <td><%= comment.created_at.strftime("%y/%m/%d %H:%M") %></td>
+              <td><%= link_to admin_comment_report_path(comment.id) do %><%= comment.created_at.strftime("%y/%m/%d %H:%M") %><% end %></td>
               <td><%= comment.reason %></td>
-              <td><%= link_to "通報詳細",admin_comment_report_path(comment.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-xs-4">
+    <h3 class="text-center" id="comment-report">問い合わせ<%= @contacts.count %>件</h3>
+
+    <div class="report">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">問い合わせ日時</th>
+            <th class="text-center">問い合わせ内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contacts.each do |contact| %>
+            <tr class="text-center table-cel">
+              <td><%= link_to edit_admin_contact_path(contact.id) do %><%= contact.created_at.strftime("%y/%m/%d %H:%M") %><% end %></td>
+              <td><%= contact.contact_text.truncate(10, separator: /\s/) %></td>
             </tr>
           <% end %>
         </tbody>

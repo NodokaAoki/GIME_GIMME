@@ -16,6 +16,12 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+// エラー文
+#error_explanation{
+	color: red;
+	font-size: 18px;
+}
+
 // header
 // 会員ヘッダー基本色
 #header{

@@ -39,4 +39,6 @@ class Playtime < ApplicationRecord
 		"300時間以上":0
 	}
 
+	validates :time, presence: true
+
 end

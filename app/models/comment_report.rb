@@ -13,4 +13,8 @@ class CommentReport < ApplicationRecord
     "保留中": 2,
     "対応済み": 3
   }
+
+  validates :report, presence: true
+  validates :reason, presence: true
+
 end

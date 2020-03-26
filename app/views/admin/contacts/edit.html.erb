@@ -15,7 +15,13 @@
         <%= @contact.email %>
         <h5><strong>問い合わせ内容</strong></h5>
         <%= @contact.contact_text %>
-      </div>
+        <h5><strong>ステータス</strong></h5>
+          <%= form_with(url: admin_contact_status_update_path,local: true, html:{class: "form-inline"}) do |f| %>
+          <%= @contact.status %>
+          <%= f.select :status, Contact.statuses.keys.to_a, {include_blank: '選択'},class: "form-control" %>
+          <%= f.hidden_field :id ,:value => @contact.id %>
+          <%= f.submit "変更",class: "btn btn-primary" %>
+          <% end %>
       <%= form_for([:admin, @contact], html:{class: "form-group"}) do |f| %>
 
         <h5><strong>回答</strong></h5>

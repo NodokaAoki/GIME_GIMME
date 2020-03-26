@@ -4,6 +4,15 @@
 	</div>
 </div>
 
+		<% if @genre.errors.any? %>
+      <div id="error_explanation">
+        <% @genre.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      </div>
+    <% end %>
+
 <div class="row">
 	<div class="col-xs-12 form-group">
 		<%= form_for(@genre ,url: admin_genres_path,html:{class: "form-inline"}) do |f| %>
@@ -14,7 +23,7 @@
 				<label><%= f.radio_button :status, true %>有効</label>
 				<label><%= f.radio_button :status, false %>無効</label>
 		    </div>
-		    <%=f.submit "追加",class: "btn btn-info" %>
+		    <%=f.submit "追加",class: "btn btn-default" %>
 			</div>
 		<%end%>
 	</div>
@@ -48,7 +57,7 @@
 									<%= f.label :status,"ステータス" %>
 									<label><%= f.radio_button :status, true %>有効</label>
 									<label><%= f.radio_button :status, false %>無効</label>
-									<%= f.submit "変更",class: "btn btn-primary" %>
+									<%= f.submit "変更",class: "btn btn-warning" %>
 								<% end %>
 							</td>
 						</tr>

@@ -4,6 +4,15 @@
 	</div>
 </div>
 
+<% if @game.errors.any? %>
+  <div id="error_explanation">
+    <% @game.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
+
 <%= form_for(@game, html:{class: "form-inline"}) do |f| %>
 
 	<div class="new-game-form game-form">

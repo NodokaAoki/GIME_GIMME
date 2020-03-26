@@ -5,7 +5,10 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.save!
+    if @contact.save
+    else
+      render :new
+    end
   end
 
   private

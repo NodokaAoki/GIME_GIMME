@@ -5,18 +5,16 @@ class CommentReportsController < ApplicationController
   end
 
   def create
-    report = CommentReport.new(report_params)
-    report.save!
-    comment = Comment.find_by(id: report.comment_id)
-    member = Member.find_by(id: comment.member_id)
-    member.report_count = member.report_count + 1
-    member.save!
-    redirect_to comment_report_path(report.id)
-  end
-
-  def show
-    @report = CommentReport.find(params[:id])
-    @comment = Comment.find_by(id: @report.comment_id)
+    @report = CommentReport.new(report_params)
+    if @report.save
+      @comment = Comment.find_by(id: @report.comment_id)
+      member = Member.find_by(id: @comment.member_id)
+      member.report_count = member.report_count + 1
+      member.save!
+    else
+      @comment = Comment.find_by(id: @report.comment_id)
+      render :new
+    end
   end
 
   private

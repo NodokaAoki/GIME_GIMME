@@ -1,0 +1,54 @@
+ja:
+  errors:
+    messages:
+      not_saved: "保存できませんでした"
+  activerecord:
+    models:
+      warning_mail: "警告メール"
+      playtime: "プレイ時間"
+      model: "対応機種"
+      member: "会員"
+      genre: "ジャンル"
+      game: "ゲーム"
+      game_report: "ゲーム記事通報"
+      contact: "お問い合わせ"
+      comment_report: "コメント通報"
+    attributes:
+      warning_mail:
+        warning_text: "警告文"
+      playtime:
+        time: "時間"
+      model:
+        model: "機種名"
+      member:
+        name: "アカウント名"
+        email: "メールアドレス"
+        password: "パスワード"
+      genre:
+        name: "ジャンル名"
+      game:
+        title: "ゲームタイトル"
+        release: "発売日"
+        number_of_people: "最大プレイ人数"
+        text: "ゲーム内容"
+        complete: "コンプリート要素"
+        orbit: "周回プレイ要素"
+        multi_ending: "マルチエンド方式"
+        cero_rating: "CEROレーティング"
+        genre: "ゲームジャンル"
+        model_ids: "対応機種"
+      game/playtimes:
+        time: "プレイ時間"
+      game_report:
+        report: "通報内容詳細"
+        reason: "通報内容"
+      contact:
+        contact_text: "お問い合わせ内容"
+        name: "お名前"
+        email: "メールアドレス"
+      comment_report:
+        report: "通報内容詳細"
+        reason: "通報内容"
+
+
+

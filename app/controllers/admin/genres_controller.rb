@@ -6,9 +6,12 @@ class Admin::GenresController < AdminController
 
   def create
     @genre = Genre.new(params_genre)
-    @genre.save
-    @genres = Genre.all
-    redirect_to admin_genres_path
+    if @genre.save
+      redirect_to admin_genres_path
+    else
+      @genres = Genre.all
+      render :index
+    end
   end
 
   def update

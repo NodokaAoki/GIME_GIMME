@@ -6,19 +6,18 @@ class GameReportsController < ApplicationController
   end
 
   def create
-    report = GameReport.new(report_params)
-    report.save!
-    game = Game.find_by(id: report.game_id)
-    member = Member.find_by(id: game.member_id)
-    member.report_count = member.report_count + 1
-    member.save!
-    redirect_to game_report_path(report.id)
-  end
-
-  def show
-    @report = GameReport.find(params[:id])
-    @game = Game.find_by(id: @report.game_id)
-    @models = GameModel.where(game_id: @game.id)
+    @report = GameReport.new(report_params)
+    if @report.save
+      @game = Game.find_by(id: @report.game_id)
+      @models = GameModel.where(game_id: @game.id)
+      member = Member.find_by(id: @game.member_id)
+      member.report_count = member.report_count + 1
+      member.save!
+    else
+      @game = Game.find_by(id: @report.game_id)
+      @models = GameModel.where(game_id: @game.id)
+      render :new
+    end
   end
 
   private

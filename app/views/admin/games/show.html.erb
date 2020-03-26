@@ -1,4 +1,13 @@
-<div class="game-box">
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
+<div class="admin-game-box">
 	<div class="game-title-box clearfix">
 		<div class="text-right">作成者：<%= link_to @game.member.name,admin_member_path(@game.member.id) %></div>
 		<h2 class="game-title pull-left"><strong><%= @game.title %></strong>
@@ -98,9 +107,11 @@
 		</div>
 	</div>
 
+
 	<div class="comment-box">
 		<div class="row">
 			<h4><b>コメント　<%= @comments.count %>件</b></h4>
+
 			<div class="col-xs-12">
 				<div class="comments">
 					<%= render @comments,game: @game %>

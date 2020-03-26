@@ -6,9 +6,13 @@ class Admin::ModelsController < AdminController
 
   def create
     @model = Model.new(params_model)
-    @model.save!
-    @models = Model.all
-    redirect_to admin_models_path
+    if @model.save
+      @models = Model.all
+      redirect_to admin_models_path
+    else
+      @models = Model.all
+      render :index
+    end
   end
 
   def update

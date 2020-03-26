@@ -14,8 +14,11 @@ Rails.application.routes.draw do
     resources :models, only: [:index,:create, :update]
     resources :game_reports, only: [:index,:show, :update]
     resources :comment_reports, only: [:index,:show, :update]
-    resources :contacts, only: [:edit, :update]
-    resources :warning_mails, only: [:new, :create, :show]
+    resources :contacts, only: [:edit, :update, :index]
+    post 'contacts/status_update' =>'contacts#status_update', as: 'contact_status_update'
+    resources :warning_mails, only: [:new, :create, :show,:index]
+    get 'search/search'
+    get 'search/search_page'
   end
   get 'admin/top' => 'admin#top', as: 'admin_top'
   devise_for :admins, controllers: {

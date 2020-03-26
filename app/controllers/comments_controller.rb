@@ -1,10 +1,20 @@
 class CommentsController < ApplicationController
   def create
-    @comment = current_member.comments.new(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.member_id = current_member.id
     @game = Game.find(params[:game_id])
     @comment.game_id = @game.id
-    @comment.save!
-    redirect_to game_path(@game.id)
+    if @comment.save
+      redirect_to game_path(@game.id)
+    else
+      @models = GameModel.where(game_id: @game.id)
+      @playtimes = @game.playtimes
+      @playtime = Playtime.new
+      @comments = @game.comments.page(params[:page]).per(5).reverse_order
+      flash[:notice]="コメントを空欄では送信できません"
+      render 'games/show'
+    end
+
   end
 
   def destroy

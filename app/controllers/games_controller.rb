@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
   before_action :authenticate_member!, only: [:new, :edit, :create, :update, :hidden, :delete]
 
-
   def index
     @genres = Genre.where(status: 'ture')
     if params[:id] == nil
@@ -23,8 +22,12 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.member_id = current_member.id
-    @game.save!
-    redirect_to game_path(@game.id)
+    if @game.save
+      redirect_to game_path(@game.id)
+    else
+      @genres = Genre.where(status: 'true')
+      render :new
+    end
   end
 
   def show
@@ -40,8 +43,16 @@ class GamesController < ApplicationController
     @playtime = Playtime.new(playtime_params)
     @playtime.game_id = params[:id]
     @playtime.member_id = current_member.id
-    @playtime.save!
-    redirect_to game_path(@playtime.game_id)
+    if @playtime.save
+      redirect_to game_path(@playtime.game_id)
+    else
+      @game = Game.find(params[:id])
+      @models = GameModel.where(game_id: @game.id)
+      @playtimes = @game.playtimes
+      @comments = @game.comments.page(params[:page]).per(5).reverse_order
+      @comment = Comment.new
+      render :show
+    end
   end
 
   def edit

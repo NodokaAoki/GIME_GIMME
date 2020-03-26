@@ -19,6 +19,16 @@
   <div class="col-xs-12">
     <div class="game-report">
       <h4 class="text-center">通報内容入力欄</h4>
+
+      <% if @report.errors.any? %>
+        <div id="error_explanation">
+          <% @report.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+
       <h5><strong>選択してください</strong></h5>
       <%= form_for(@report, html:{class: "form-group"}) do |f| %>
         <div class="game-report-input">

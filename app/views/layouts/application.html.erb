@@ -38,23 +38,6 @@
       </nav>
     </div>
   </header>
-<!-- 検索 -->
-<%if !request.url.include?("/search_page") %><!-- 詳細検索ページでは非表示 -->
-  <div class="container">
-    <div class="col-xs-12">
-      <div class="search text-center">
-        <%= form_tag(search_search_path,method: :get,class: "form-inline") do %>
-          <%= image_tag('search.png') %>
-            <div class="input-group">
-            <%= text_field_tag :title, params[:title],placeholder: "ゲーム名で検索", :size => "50%",class: "form-control" %>
-            <span class="input-group-btn"><%= submit_tag "検索",class: "btn btn-default" %></span>
-            </div>
-          <%= link_to "詳細検索ページへ",search_search_page_path,class: "btn btn-info" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
 
 <!-- 管理者ログイン中 -->
 <% elsif admin_signed_in? %>
@@ -70,11 +53,16 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "管理者トップページ",admin_top_path %></li>
                   <li><%= link_to "会員一覧",admin_members_path %></li>
+                  <li><%= link_to "記事一覧",admin_games_path %></li>
+                  <li><%= link_to "警告メール一覧",admin_warning_mails_path %></li>
                   <li><%= link_to "ジャンル管理",admin_genres_path %></li>
                   <li><%= link_to "対応機種管理",admin_models_path %></li>
                   <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
                 </ul>
             </li>
+            <li><%= link_to "問い合わせ一覧",admin_contacts_path %> </li>
+            <li><%= link_to "コメント通報一覧",admin_comment_reports_path %> </li>
+            <li><%= link_to "ゲーム通報一覧",admin_game_reports_path %> </li>
             <li class="login-name" id="login-name-admin">管理者ログイン中</li>
         </ul>
       </nav>
@@ -100,6 +88,9 @@
       </nav>
     </div>
   </header>
+<% end %>
+
+<div class="container">
   <!-- 検索 -->
   <%if !request.url.include?("/search_page") %><!-- 詳細検索ページでは非表示 -->
     <div class="container">
@@ -117,9 +108,7 @@
       </div>
     </div>
   <% end %>
-<% end %>
 
-    <div class="container">
     <%= yield %>
     </div>
 <footer></footer>

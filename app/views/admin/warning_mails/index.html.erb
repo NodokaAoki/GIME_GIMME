@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="page-title" id="game-report">警告メール送信履歴</h2>
+
+    <div class="report">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">アカウント名</th>
+            <th class="text-center">送信日時</th>
+            <th class="text-center">警告内容</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @warnings.each do |warning| %>
+            <tr class="text-center table-cel">
+              <td><%= link_to warning.member.name,admin_member_path(warning.member.id) %></td>
+              <td><%= warning.created_at.strftime("%y/%m/%d %H:%M") %></td>
+              <td><%= warning.warning_text.truncate(10, separator: /\s/) %></td>
+              <td><%= link_to "詳細",admin_warning_mail_path(warning.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center"><%= paginate @warnings %></div>
+  </div>
+</div>
