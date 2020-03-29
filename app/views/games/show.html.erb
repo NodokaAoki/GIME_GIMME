@@ -133,7 +133,8 @@
 		<% if !member_signed_in? %><!-- ゲスト -->
 			<span class="game-info">ログインすると、プレイ時間を投票することができます。</span>
 		<% elsif @game.member_id == current_member.id %><!-- 作成者非表示 -->
-
+		<%  elsif @game.playtime_by?(current_member) %><!-- 投票済 -->
+			<span class="game-info">このゲームのプレイ時間は投票済みです。</span>
 		<% else member_signed_in? %><!-- 未投票 -->
 		    <% if @playtime.errors.any? %>
 		      <div id="error_explanation">

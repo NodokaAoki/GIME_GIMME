@@ -52,7 +52,9 @@
 				対応機種
 			</div>
 			<div class="col-xs-7">
-    			<%= f.collection_check_boxes :model_ids, Model.all.reverse_order, :id, :model %>
+    			<%= f.collection_check_boxes :model_ids, Model.all.reverse_order, :id, :model do |b| %>
+    			<span class="check-box"><%= b.label { b.check_box + b.text } %></span>
+    		<% end %>
 			</div>
 		</div>
 		<div class="row">
