@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     @rankgames = Game.select('games.*','count(favorites.id) AS favs') #gameテーブルの情報とfavoriteの数を取得
                   .left_joins(:favorites) #favoritesを右側(gamesが左側)のテーブルにして結合
                   .group('games.id') #game.idでグループ
-                  .where(created_at: mon..day) #閲覧日から一ヶ月前までを集計
+                  .where(created_at: mon..Time.now) #閲覧日から一ヶ月前までを集計
                   .order('favs desc') #favorite数の多い順に並べ替え
                   .limit(5) #5件まで
                   .where(status: true)
