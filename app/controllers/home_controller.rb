@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
     @newgames = Game.where(status: true).reverse_order.limit(5) #新着5件取得
 
-    day = Date.yesterday #今日
+    day = Date.current #今日
     mon = day << 1 #ひと月前からのデータ
     @rankgames = Game.select('games.*','count(favorites.id) AS favs') #gameテーブルの情報とfavoriteの数を取得
                   .left_joins(:favorites) #favoritesを右側(gamesが左側)のテーブルにして結合
