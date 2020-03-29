@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get 'admin/top' => 'admin#top', as: 'admin_top'
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
-      passwords:     'members/passwords'
-      registrations: 'members/registrations'
+      passwords:     'admins/passwords',
+      registrations: 'admins/registrations'
   }
   devise_for :members, controllers: {
   		sessions:      'members/sessions',
