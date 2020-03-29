@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
       passwords:     'members/passwords'
+      registrations: 'members/registrations'
   }
   devise_for :members, controllers: {
   		sessions:      'members/sessions',
