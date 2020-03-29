@@ -31,7 +31,7 @@
                 </ul>
           </li>
           <li><%= link_to "お問い合わせ", new_contact_path %></li>
-          <li><%= link_to "アバウト" %></li>
+          <li><%= link_to "アバウト",home_about_path %></li>
           <li><%= link_to "トップページ",root_path %></li>
           <li class="login-name", id="login-name"><span><%= link_to current_member.name,member_path(current_member) %>さん</span></li>
         </ul>
@@ -81,7 +81,7 @@
           <li><%= link_to "ログイン", member_session_path %></li>
           <li><%= link_to "アカウント作成", new_member_registration_path %></li>
           <li><%= link_to "お問い合わせ", new_contact_path %></li>
-          <li><%= link_to "アバウト" %></li>
+          <li><%= link_to "アバウト",home_about_path %></li>
           <li><%= link_to "トップページ",root_path %></li>
           <li class="login-name" id="login-name">ゲストさん</li>
         </ul>
