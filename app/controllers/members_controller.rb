@@ -47,8 +47,9 @@ class MembersController < ApplicationController
     end
     @member.status = 1
     @member.save
+    
     sign_out
-    redirect_to root_path
+    redirect_to root_path,notice: '退会しました。'
   end
 
   def edit
