@@ -17,9 +17,6 @@ class Game < ApplicationRecord
   validates :release, presence: true
   validates :number_of_people, presence: true
   validates :text, presence: true
-  validates :complete, presence: true
-  validates :orbit, presence: true
-  validates :multi_ending, presence: true
   validates :cero_rating, presence: true
   validates :model_ids, presence: true
 
