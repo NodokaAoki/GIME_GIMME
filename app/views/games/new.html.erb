@@ -45,7 +45,9 @@
 				ゲームジャンル
 			</div>
 			<div class="col-xs-7">
-    			<%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: '選択'},{class: "form-control"} %>
+				<span>
+    			<%= f.collection_select :genre_id, @genres.reverse_order, :id, :name, {include_blank: '選択'},{class: "form-control"} %>
+    		</span>
 			</div>
 		</div>
 		<div class="row">

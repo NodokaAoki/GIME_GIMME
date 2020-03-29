@@ -44,7 +44,7 @@
 				ゲームジャンル
 			</div>
 			<div class="col-xs-7">
-    			<%= f.collection_select :genre_id, @genres, :id, :name, {},{class: "form-control"} %>
+    			<%= f.collection_select :genre_id, @genres.reverse_order, :id, :name, {},{class: "form-control"} %>
 			</div>
 		</div>
 		<div class="row">
@@ -60,7 +60,9 @@
 				最大プレイ人数
 			</div>
 			<div class="col-xs-7">
+				<span>
 				<%= f.text_field :number_of_people, :size=>'5%', class: "form-control",placeholder: "人数" %>人
+				</span>
 			</div>
 		</div>
 		<div class="row">
