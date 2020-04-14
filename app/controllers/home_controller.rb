@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def top
-    @genres = Genre.where(status: 'ture')
+    @genres = Genre.where(status: 'ture').reverse_order
 
     @newgames = Game.where(status: true).reverse_order.limit(5) #新着5件取得
 
