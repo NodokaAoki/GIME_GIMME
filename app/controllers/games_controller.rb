@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :authenticate_member!, only: [:new, :edit, :create, :update, :hidden, :delete]
 
   def index
-    @genres = Genre.where(status: 'ture')
+    @genres = Genre.where(status: 'ture').reverse_order
     if params[:id] == nil
       @games = Game.where(status: true).page(params[:page]).per(10).reverse_order
       @title = "ゲーム"
