@@ -1,32 +1,32 @@
 <div class="row">
-	<div class="col-xs-12">
-		<h2 class="page-title">登録情報編集</h2>
-	</div>
+  <div class="col-xs-12">
+    <h2 class="page-title">登録情報編集</h2>
+  </div>
 </div>
 
 <div class="member-edit">
-	<%= form_for(@member) do |f| %>
-			<div class="row">
-			<div class="col-xs-3">
-				アカウント名
-			</div>
-			<div class="col-xs-9">
-				<%= f.text_field :name,class: "form-control" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-3">
-				メールアドレス
-			</div>
-			<div class="col-xs-9">
-				<%= f.email_field :email,class: "form-control" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="text-right" >パスワードを変更する場合は<%= link_to "こちら", new_member_password_path(current_member) %></div>
-				<%= f.submit "変更を保存",class: "btn btn-primary center-block" %>
-			</div>
-		</div>
-	<% end %>
+  <%= form_for(@member) do |f| %>
+      <div class="row">
+      <div class="col-xs-3">
+        アカウント名
+      </div>
+      <div class="col-xs-9">
+        <%= f.text_field :name,class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        メールアドレス
+      </div>
+      <div class="col-xs-9">
+        <%= f.email_field :email,class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-right" >パスワードを変更する場合は<%= link_to "こちら", new_member_password_path(current_member) %></div>
+        <%= f.submit "変更を保存",class: "btn btn-primary center-block" %>
+      </div>
+    </div>
+  <% end %>
 </div>

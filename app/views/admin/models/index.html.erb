@@ -1,13 +1,13 @@
 <div class="row">
-	<div class="col-xs-12">
-		<h2 class="page-title">対応機種管理</h2>
-	</div>
+  <div class="col-xs-12">
+    <h2 class="page-title">対応機種管理</h2>
+  </div>
 </div>
 
 <div class="row">
-	<div class="col-xs-12 form-group">
+  <div class="col-xs-12 form-group">
 
-		<% if @model.errors.any? %>
+    <% if @model.errors.any? %>
       <div id="error_explanation">
         <% @model.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -16,46 +16,46 @@
       </div>
     <% end %>
 
-		<%= form_for([:admin,@model] ,html:{class: "form-inline"}) do |f| %>
-			<div class="admin-add">
-				<p class="admin-add-label">対応機種追加</p>
-				<div class="input-group">
-			    <%= f.text_field :model, placeholder: "対応機種名",class: "form-control" %>
-					<span class="input-group-btn">
-			    <%=f.submit "追加",class: "btn btn-default" %>
-			  	</span>
-			  </div>
-			</div>
-		<%end%>
-	</div>
+    <%= form_for([:admin,@model] ,html:{class: "form-inline"}) do |f| %>
+      <div class="admin-add">
+        <p class="admin-add-label">対応機種追加</p>
+        <div class="input-group">
+          <%= f.text_field :model, placeholder: "対応機種名",class: "form-control" %>
+          <span class="input-group-btn">
+          <%=f.submit "追加",class: "btn btn-default" %>
+          </span>
+        </div>
+      </div>
+    <%end%>
+  </div>
 </div>
 
 <div class="row">
-	<div class="col-xs-12">
-		<div class="models">
-			<table class= "table table-hover table-bordered table-admin">
-				<thead>
-					<tr>
-						<th class="text-center">ID</th>
-						<th class="text-center">対応機種名</th>
-						<th class="text-center">機種名変更</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @models.each do |model| %>
-						<tr class="text-center table-cel">
-							<td><%= model.id %></td>
-							<td><%= model.model %></td>
-							<td><%= form_for([:admin,model],html:{class: "form-inline"}) do |f| %>
-								<%= f.text_field :model,class: "form-control" %>
-								<%= f.submit "変更",class: "btn btn-warning" %>
-								<% end %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>
+  <div class="col-xs-12">
+    <div class="models">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">対応機種名</th>
+            <th class="text-center">機種名変更</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @models.each do |model| %>
+            <tr class="text-center table-cel">
+              <td><%= model.id %></td>
+              <td><%= model.model %></td>
+              <td><%= form_for([:admin,model],html:{class: "form-inline"}) do |f| %>
+                <%= f.text_field :model,class: "form-control" %>
+                <%= f.submit "変更",class: "btn btn-warning" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 

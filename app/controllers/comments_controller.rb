@@ -18,9 +18,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-  	comment = Comment.find(params[:game_id])
-  	comment.destroy
-  	redirect_to game_path(comment.game_id)
+    comment = Comment.find(params[:game_id])
+    comment.destroy
+    redirect_to game_path(comment.game_id)
   end
 
   private

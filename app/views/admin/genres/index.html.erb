@@ -1,10 +1,10 @@
 <div class="row">
-	<div class="col-xs-12">
-		<h2 class="page-title">ジャンル管理</h2>
-	</div>
+  <div class="col-xs-12">
+    <h2 class="page-title">ジャンル管理</h2>
+  </div>
 </div>
 
-		<% if @genre.errors.any? %>
+    <% if @genre.errors.any? %>
       <div id="error_explanation">
         <% @genre.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -14,57 +14,57 @@
     <% end %>
 
 <div class="row">
-	<div class="col-xs-12 form-group">
-		<%= form_for(@genre ,url: admin_genres_path,html:{class: "form-inline"}) do |f| %>
-			<div class="admin-add">
-			<p class="admin-add-label">ジャンル追加</p>
-		    <%= f.text_field :name, placeholder: "ジャンル名",class: "form-control" %>
-			<div class="radio">
-				<label><%= f.radio_button :status, true %>有効</label>
-				<label><%= f.radio_button :status, false %>無効</label>
-		    </div>
-		    <%=f.submit "追加",class: "btn btn-default" %>
-			</div>
-		<%end%>
-	</div>
+  <div class="col-xs-12 form-group">
+    <%= form_for(@genre ,url: admin_genres_path,html:{class: "form-inline"}) do |f| %>
+      <div class="admin-add">
+      <p class="admin-add-label">ジャンル追加</p>
+        <%= f.text_field :name, placeholder: "ジャンル名",class: "form-control" %>
+      <div class="radio">
+        <label><%= f.radio_button :status, true %>有効</label>
+        <label><%= f.radio_button :status, false %>無効</label>
+        </div>
+        <%=f.submit "追加",class: "btn btn-default" %>
+      </div>
+    <%end%>
+  </div>
 </div>
 
 <div class="row">
-	<div class="col-xs-12">
-		<div class="genres">
-			<table class= "table table-hover table-bordered table-admin">
-				<thead>
-					<tr>
-						<th class="text-center">ID</th>
-						<th class="text-center">ジャンル名</th>
-						<th class="text-center">ステータス</th>
-						<th class="text-center">ジャンル情報変更</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @genres.each do |genre| %>
-						<tr class="text-center table-cel">
-							<td><%= genre.id %></td>
-							<td><%= genre.name %></td>
-							<% if genre.status == true%>
-								<td><h4><span class="label label-primary">有効</span></h4></td>
-							<%else%>
-								<td><h4 class="genre-status"><span class="label label-danger">無効</span></h4></td>
-							<%end%>
-							<td class="text-center">
-								<%= form_for([:admin,genre],html:{class: "form-inline"}) do |f| %>
-									<%= f.text_field :name,class: "form-control" %>
-									<%= f.label :status,"ステータス" %>
-									<label><%= f.radio_button :status, true %>有効</label>
-									<label><%= f.radio_button :status, false %>無効</label>
-									<%= f.submit "変更",class: "btn btn-warning" %>
-								<% end %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>
+  <div class="col-xs-12">
+    <div class="genres">
+      <table class= "table table-hover table-bordered table-admin">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">ジャンル名</th>
+            <th class="text-center">ステータス</th>
+            <th class="text-center">ジャンル情報変更</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr class="text-center table-cel">
+              <td><%= genre.id %></td>
+              <td><%= genre.name %></td>
+              <% if genre.status == true%>
+                <td><h4><span class="label label-primary">有効</span></h4></td>
+              <%else%>
+                <td><h4 class="genre-status"><span class="label label-danger">無効</span></h4></td>
+              <%end%>
+              <td class="text-center">
+                <%= form_for([:admin,genre],html:{class: "form-inline"}) do |f| %>
+                  <%= f.text_field :name,class: "form-control" %>
+                  <%= f.label :status,"ステータス" %>
+                  <label><%= f.radio_button :status, true %>有効</label>
+                  <label><%= f.radio_button :status, false %>無効</label>
+                  <%= f.submit "変更",class: "btn btn-warning" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 

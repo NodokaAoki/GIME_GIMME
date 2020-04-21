@@ -18,124 +18,124 @@
 
 // エラー文
 #error_explanation{
-	color: red;
-	font-size: 18px;
+  color: red;
+  font-size: 18px;
 }
 
 // header
 // 会員ヘッダー基本色
 #header{
-	color: white;
-	background-color: #59DAC9;
-	margin-bottom: 30px;
+  color: white;
+  background-color: #59DAC9;
+  margin-bottom: 30px;
 }
 // ロゴ
 .sitelogo img{
-	padding: 10px 3px;
-	height: 70px;
+  padding: 10px 3px;
+  height: 70px;
 }
 // ロゴhoverしたとき背景色変化
 header img:hover{
-	background-color: #55C5B8;
+  background-color: #55C5B8;
 }
 // liの装飾無し
 li{
-	list-style: none;
+  list-style: none;
 }
 // ヘッダーメニュー右寄せ
 .navber-right{
-	height: 70px;
-	float: right;
-	width: 75%;
+  height: 70px;
+  float: right;
+  width: 75%;
 }
 // ulの余白無し(bootstrap)
 .nav ul{
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 // ヘッダーメニューの横並びと見た目調整
 .navber-right > li{
-	position: relative;
-	float: right;
-	display: inline-block;
-	line-height: 70px;
-	height: 70px;
-	text-align: center;
+  position: relative;
+  float: right;
+  display: inline-block;
+  line-height: 70px;
+  height: 70px;
+  text-align: center;
 }
 // ユーザー名以外の要素のサイズ指定
 .navber-right > li:not(.login-name){
-	width: 20%;
+  width: 20%;
 }
 #login-name a{
-	color: white;
+  color: white;
 }
 // ヘッダーメニューのリンク
 .navber-right li > a{
-	text-decoration: none;
-	color: white;
-	line-height: 70px;
-	display: block;
+  text-decoration: none;
+  color: white;
+  line-height: 70px;
+  display: block;
 }
 // hoverした時の背景色変化
 .navber-right :not(.login-name) > a:hover,.menu-li:hover{
-	background-color: #55C5B8;
-	color: white;
+  background-color: #55C5B8;
+  color: white;
 }
 // ユーザー名hoverした時に下線
 #login-name a:hover{
-	text-decoration: underline;
+  text-decoration: underline;
 }
 // ドロップダウン（メニュー）調整
 .menu-li{
-	padding: 0;
-	margin: 0;
-	background-color: transparent;
-	border: none;
-	width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  width: 100%;
 }
 // ドロップダウン（メニュー）の中身調整
 .navber-right li > ul > li > a{
-	height: 30px;
-	line-height: 30px;
-	padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
 }
 // ドロップダウン（メニュー）の見た目調整
 #header .navber-right li:hover ul {
-	display: block;
-	background-color: #59DAC9;
+  display: block;
+  background-color: #59DAC9;
 }
 
 // body
 
 body{
-	background-color: #F3FFFE;
+  background-color: #F3FFFE;
 }
 table{
-	background-color: white
+  background-color: white
 }
 .page-title{
-	text-align: center;
+  text-align: center;
 }
 // ページタイトルの下線デザイン
 .page-title::after{
-	content: '';
-	display: block;
-	width: 100px;
-	height: 3px;
-	border-color: #55C5B8;
-	border-bottom-style: solid ;
-	margin: 5px auto 30px;
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  border-color: #55C5B8;
+  border-bottom-style: solid ;
+  margin: 5px auto 30px;
 }
 // テーブルの文字上下中央揃え
 .table .table-cel td{
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 // ページネーション
 .pagenation a{
-	display: block;
+  display: block;
 }
 
 footer{
-	margin-top:20px;
+  margin-top:20px;
 }
