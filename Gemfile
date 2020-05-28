@@ -70,7 +70,7 @@ group :production do
 end
 
 gem 'devise'
-gem 'kaminari','~> 1.1.1'
+gem 'kaminari','~> 1.2.1'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'chartkick'
