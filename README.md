@@ -1,25 +1,51 @@
-# README
+# Gime Gimme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ゲームは好きだけれど、プレイする時間も自分好みのゲームを探す時間も足りない・・・
+そんな人の為のゲーム口コミサイトです。
 
-Things you may want to cover:
+## 機能
+** 会員登録をしなくても可能なこと **
+- 口コミ記事の閲覧
+- 検索
+- 通報・問い合わせ
 
-* Ruby version
+** 会員登録をすると可能になること **
+- 口コミ記事の投稿・編集・削除
+- コメントの投稿
+- プレイ時間の投票
+- 記事のお気に入り登録
 
-* System dependencies
+## 開発環境
+- OS
+Linux(Ubuntu)
 
-* Configuration
+- 言語
+HTML,CSS,JavaScript,Ruby,SQL
 
-* Database creation
+- フレームワーク
+Ruby on Rails
 
-* Database initialization
+- Rubyバージョン
+ruby 2.5.7
 
-* How to run the test suite
+- Railsライブラリ
+devise
+kaminari
 
-* Services (job queues, cache servers, search engines, etc.)
+- JSライブラリ
+Bootstrap
+jQuery
 
-* Deployment instructions
+- インフラ
+AWS(EC2,RDS,EIP)
 
-* ...
-# GIME_GIMME
+- テストフレームワーク
+なし
+
+- その他ツールなど
+chartkick(グラフ描画)
+rails-i18n(日本語化)
+
+## 作者
+NodokaAoki
+mail to: genta91nya@gmail.com

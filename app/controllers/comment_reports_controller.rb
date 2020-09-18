@@ -7,10 +7,13 @@ class CommentReportsController < ApplicationController
   def create
     @report = CommentReport.new(report_params)
     if @report.save
-      @comment = Comment.find_by(id: @report.comment_id)
-      member = Member.find_by(id: @comment.member_id)
-      member.report_count = member.report_count + 1
-      member.save!
+      begin
+        @comment = Comment.find_by!(id: @report.comment_id)
+        member = Member.find_by!(id: @comment.member_id)
+        member.report_count = member.report_count + 1
+        member.save!
+      retry
+      end
     else
       @comment = Comment.find_by(id: @report.comment_id)
       render :new

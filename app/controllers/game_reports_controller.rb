@@ -8,11 +8,14 @@ class GameReportsController < ApplicationController
   def create
     @report = GameReport.new(report_params)
     if @report.save
-      @game = Game.find_by(id: @report.game_id)
-      @models = GameModel.where(game_id: @game.id)
-      member = Member.find_by(id: @game.member_id)
-      member.report_count = member.report_count + 1
-      member.save!
+      begin
+        @game = Game.find_by!(id: @report.game_id)
+        @models = GameModel.where(game_id: @game.id)
+        member = Member.find_by!(id: @game.member_id)
+        member.report_count = member.report_count + 1
+        member.save!
+      retry
+      end
     else
       @game = Game.find_by(id: @report.game_id)
       @models = GameModel.where(game_id: @game.id)
