@@ -16,33 +16,33 @@
 - 記事のお気に入り登録
 
 ## 開発環境
-- OS
+- OS  
 Linux(Ubuntu)
 
-- 言語
+- 言語  
 HTML,CSS,JavaScript,Ruby,SQL
 
-- フレームワーク
+- フレームワーク  
 Ruby on Rails
 
-- Rubyバージョン
+- Rubyバージョン  
 ruby 2.5.7
 
-- Railsライブラリ
-devise
+- Railsライブラリ  
+devise  
 kaminari
 
-- JSライブラリ
-Bootstrap
+- JSライブラリ  
+Bootstrap  
 jQuery
 
-- インフラ
+- インフラ  
 AWS(EC2,RDS,EIP)
 
-- テストフレームワーク
+- テストフレームワーク  
 なし
 
-- その他ツールなど
+- その他ツールなど  
 chartkick(グラフ描画)  
 rails-i18n(日本語化)
 
