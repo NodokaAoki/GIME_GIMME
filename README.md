@@ -1,6 +1,7 @@
 # Gime Gimme
 
 ゲームは好きだけれど、プレイする時間も自分好みのゲームを探す時間も足りない・・・
+
 そんな人の為のゲーム口コミサイトです。
 
 ## 機能
@@ -44,8 +45,10 @@ AWS(EC2,RDS,EIP)
 
 - その他ツールなど
 chartkick(グラフ描画)
+
 rails-i18n(日本語化)
 
 ## 作者
 NodokaAoki
+
 mail to: genta91nya@gmail.com
